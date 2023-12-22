@@ -1,6 +1,5 @@
 <?php
 include("connect.php");
-// ali branch
 
 try {
     global $email;
