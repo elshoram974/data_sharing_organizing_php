@@ -1,6 +1,8 @@
 <?php
 include("connect.php");
 
+// login api
+
 try {
     global $email;
     global $password;
