@@ -1,5 +1,5 @@
 <?php
-function postRequest(string $body, bool $canBeEmpty = false): string
+function postRequest(string $body, bool $canBeEmpty = false): ?string
 {
     $post = $_POST[$body];
     if (!$canBeEmpty && empty($post)) {
