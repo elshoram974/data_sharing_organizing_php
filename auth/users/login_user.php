@@ -16,14 +16,9 @@ if ($count > 0) {
 
     // Hash the provided password and compare it with the stored hash
     if (password_verify($password, $user['user_password'])) {
-        if ($user['user_is_verified'] == 1) {
 
-            $user['account_lastlogin'] = updateLastLogin($con, $user['user_id']);
-
-            $response = successState('user', $user);
-        } else {
-            $response = errorState(401, 'You have to confirm your account');
-        }
+        $user['account_lastlogin'] = updateLastLogin($con, $user['user_id']);
+        $response = successState('user', $user);
     } else {
         $response = errorState(401, 'Error in password');
     }
