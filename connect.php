@@ -1,4 +1,5 @@
 <?php
+// Ali Hamoli
 $dbname = "data_sharing_organizing";
 $user = "thiet";
 $pass = "thiet2024";
