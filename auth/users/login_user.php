@@ -16,8 +16,11 @@ if ($count > 0) {
 
     $user =  User::fromArray($array);
 
+    if ($user->password == 'User created by another provider') {
+        $response = errorState(401, 'User created by another provider');
+    }
     // Hash the provided password and compare it with the stored hash
-    if (password_verify($password, $user->password)) {
+    elseif (password_verify($password, $user->password)) {
 
         $user->lastLogin = new DateTime(updateLastLogin($con, $user->id));
         $response = successState('user', $user->toArray());
