@@ -26,5 +26,4 @@ if ($count > 0) {
     $response = errorState(401, 'The email you entered does not exist');
 }
 
-header('Content-Type: application/json');
 echo json_encode($response);
