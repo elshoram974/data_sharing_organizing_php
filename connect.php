@@ -15,7 +15,7 @@ date_default_timezone_set('Africa/Cairo');
 try {
     $con = new PDO($dsn, $user, $pass, $options);
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    include("functions/import.php");
+    include("core/functions/import.php");
 } catch (\Throwable $th) {
     // failureStatus($th->getMessage());
 }
