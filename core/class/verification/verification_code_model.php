@@ -20,9 +20,8 @@ class VerificationCode
         $this->createDate = $createDate;
     }
 
-    public static function fromJson(string $json): self
+    public static function fromArray(array $data): self
     {
-        $data = json_decode($json, true);
 
         return new self(
             $data['verification_id'],
@@ -33,14 +32,14 @@ class VerificationCode
         );
     }
 
-    public function toJson(): string
+    public function toArray(): array
     {
-        return json_encode([
+        return array(
             'verification_id' => $this->id,
             'verification_user' => $this->userId,
             'verification_code' => $this->code,
             'verification_type' => $this->codeType,
             'verification_created_at' => $this->createDate->format('Y-m-d H:i:s'),
-        ], JSON_PRETTY_PRINT);
+        );
     }
 }
