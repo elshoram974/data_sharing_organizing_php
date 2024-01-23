@@ -1,4 +1,8 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Credentials: true');
+header('Content-Type: application/json');
+
 $dbname = "data_sharing_organizing";
 $user = "thiet";
 $pass = "thiet2024";
