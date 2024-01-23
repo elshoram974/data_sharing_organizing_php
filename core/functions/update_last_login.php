@@ -7,3 +7,12 @@ function updateLastLogin(PDO $con, int $userId): string
 
     return $loginTime;
 }
+
+function updateAdminLastLogin(PDO $con, int $adminId): string
+{
+    $loginTime = date('Y-m-d H:i:s');
+    $updateStmt = $con->prepare("UPDATE `admins` SET `a_last_login` = ? WHERE `a_id` = ?");
+    $updateStmt->execute(array($loginTime, $adminId));
+
+    return $loginTime;
+}
