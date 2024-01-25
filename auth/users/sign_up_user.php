@@ -3,7 +3,7 @@ include("../../connect.php");
 include("../../core/class/app_user/app_user_model.php");
 
 
-$name = postRequest('name');
+$name = postRequest('name', true);
 $email = postRequest('email');
 $password = postRequest('password');
 $userRole = postRequest('userRole');
@@ -15,9 +15,9 @@ if ($count == 0) {
 
     if (strlen($password) >= 8) {
 
-        $nameParts = explode(' ', $name);
+        $nameParts = explode(' ', $name ?? 'No Name');
         $firstName = $nameParts[0];
-        $lastName = implode(' ', array_slice($nameParts, 1));
+        $lastName = trim(implode(' ', array_slice($nameParts, 1)));
 
         $stmt = $con->prepare("INSERT INTO `app_users`(`user_email`, `user_first_name`, `user_last_name`, `user_password`, `user_provider`, `user_role`) VALUES (?,?,?,?,?,?)");
         $stmt->execute([$email, $firstName, $lastName, makeHashPassword($password), 'email_password', $userRole]);
