@@ -6,8 +6,7 @@ include("../../core/class/app_user/app_user_model.php");
 $email = postRequest('email');
 $password = postRequest('password');
 
-$stmt = $con->prepare("SELECT * FROM `app_users` WHERE `user_email` = ?");
-$stmt->execute(array($email));
+$stmt = selectFromAppUser($email, $con);
 
 $count = $stmt->rowCount();
 
@@ -21,6 +20,10 @@ if ($count > 0) {
     }
     // Hash the provided password and compare it with the stored hash
     elseif (password_verify($password, $user->password)) {
+
+        if (!$user->isVerified) {
+            // TODO: send code
+        }
 
         $user->lastLogin = new DateTime(updateLastLogin($con, $user->id));
         $response = successState('user', $user->toArray());
