@@ -21,9 +21,7 @@ if ($count > 0) {
     // Hash the provided password and compare it with the stored hash
     elseif (password_verify($password, $user->password)) {
 
-        if (!$user->isVerified) {
-            // TODO: send code
-        }
+        if (!$user->isVerified) sendUserVerifyEmail($email);
 
         $user->lastLogin = new DateTime(updateLastLogin($con, $user->id));
         $response = successState('user', $user->toArray());

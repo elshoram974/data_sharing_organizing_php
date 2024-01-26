@@ -26,7 +26,7 @@ if ($count == 0) {
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
         $user =  User::fromArray($array);
 
-        // TODO: send code
+        sendUserVerifyEmail($email);
 
 
         $response = successState('user', $user->toArray());
