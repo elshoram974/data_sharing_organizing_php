@@ -47,6 +47,34 @@
 							"response": []
 						},
 						{
+							"name": "send_admin_verify_code",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "elshora@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminsAuth}}/send_admin_verify_code.php",
+									"host": [
+										"{{adminsAuth}}"
+									],
+									"path": [
+										"send_admin_verify_code.php"
+									]
+								},
+								"description": "# Send admin verify code Api Documentation\n\n## Send verify code for admins By admin email\n\nSend verify code for admin.\n\n- **Endpoint:** `/send_admin_verify_code.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `email` | String | The email address of the admin. |\n\n### Request Example\n\n``` json\n{\n  \"email\": \"elshora@gmail.com\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin\": {\n        \"a_id\": 1,\n        \"a_first_name\": \"Mohammed\",\n        \"a_last_name\": \"El Shora\",\n        \"a_email\": \"elshora@gmail.com\",\n        \"a_password\": \"$2y$10$Xx9juMyB.B8pHcQvjoPuZOT7DtBkz2Pqii6TiQEG9TUvbpPEva6m6\",\n        \"a_verified_code\": \"541234\", // not be null\n        \"a_last_login\": \"2024-01-26 06:57:16\",\n        \"a_create_at\": \"2024-01-23 04:56:39\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the email is not exist in database\n    \n\n``` json\n{\n \"status\": \"Failure\",\n \"code\": 401,\n \"message\": \"The email you entered does not exist\"\n }\n\n ```\n\nOr you have to fill `email` .. if you don't fill it or when you forgot it\n\n``` json\n {  \n \"status\": \"Failure\",  \n \"code\": 400,  \n \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"  \n }\n\n ```"
+							},
+							"response": []
+						},
+						{
 							"name": "check_admin_verify_code",
 							"request": {
 								"method": "POST",
