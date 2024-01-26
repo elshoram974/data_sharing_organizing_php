@@ -106,6 +106,39 @@
 								"description": "# Check Admin verify code Api Documentation\n\n## Check verify code for admins By admin id\n\nCheck verify code for admin.\n\n- **Endpoint:** `/check_admin_verify_code.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `adminId` | int | The id of the admin. |\n| `code` | String | The code that was sent to the admin. |\n\n### Request Example\n\n``` json\n{\n  \"adminId\": 1,\n  \"password\": \"123456\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin\": {\n        \"a_id\": 1,\n        \"a_first_name\": \"Mohammed\",\n        \"a_last_name\": \"El Shora\",\n        \"a_email\": \"elshora@gmail.com\",\n        \"a_password\": \"$2y$10$Xx9juMyB.B8pHcQvjoPuZOT7DtBkz2Pqii6TiQEG9TUvbpPEva6m6\",\n        \"a_verified_code\": null,// always null\n        \"a_last_login\": \"2024-01-25 15:49:11\",\n        \"a_create_at\": \"2024-01-23 04:56:39\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the id is not exist in database\n    \n\n``` json\n{\n \"status\": \"Failure\",\n \"code\": 401,\n \"message\": \"The adminId you entered does not exist\"\n }\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    When the `code` is incorrect\n    \n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 400,  \n   \"message\": \"Invalid verification code\"  \n  }\n\n ```\n\nOr you have to fill `adminId` and `code` .. if you don't fill them or when you forgot one of the post body\n\n``` json\n {  \n \"status\": \"Failure\",  \n \"code\": 400,  \n \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"  \n }\n\n ```"
 							},
 							"response": []
+						},
+						{
+							"name": "admin_new_password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "adminId",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "elshora@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminsAuth}}/admin_new_password.php",
+									"host": [
+										"{{adminsAuth}}"
+									],
+									"path": [
+										"admin_new_password.php"
+									]
+								},
+								"description": "# Admin New Password Api Documentation\n\n## Create a New password\n\nCreates a new pass to the Admin.\n\n- **Endpoint:** `/admin_new_password.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `adminId` | int | The Id of the admin. |\n| `newPassword` | String | Password for the admin. Minimum length: 8 chars. invalid the last password |\n\n### Request Example\n\n``` json\n{\n  \"adminId\": \"1\",\n  \"newPassword\": \"StrongPassword123\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin\": {\n        \"a_id\": 1,\n        \"a_first_name\": \"Mohammed\",\n        \"a_last_name\": \"El Shora\",\n        \"a_email\": \"elshora@gmail.com\",\n        \"a_password\": \"$2y$10$9b6PVcuWrgJATyrKx4OH7ergNHNgEHRVtt3dOvRKh9g2rZvTr99B.\",\n        \"a_verified_code\": null,\n        \"a_last_login\": \"2024-01-26 06:57:16\",\n        \"a_create_at\": \"2024-01-23 04:56:39\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 409)**  \n    When the adminId is not exist in database\n    \n    ``` json\n                  {\n                  \"status\": \"Failure\",\n                  \"code\": 409,\n                  \"message\": \"The adminId you entered does not exist\"\n                  }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 400)** When the length of the password is lesser than 8\n    \n    ``` json\n              {\n              \"status\": \"Failure\",\n              \"code\": 400,\n              \"message\": \"The password is very weak\"\n              }\n    \n     ```\n    \n\nWhen the new password is the same of last password\n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"message\": \"You can't use the the same previous password\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n    ``` json\n    {\n    \"status\": \"Failure\",\n    \"code\": 400,\n    \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n    }\n    \n     ```"
+							},
+							"response": []
 						}
 					]
 				},
