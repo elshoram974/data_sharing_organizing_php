@@ -7,8 +7,7 @@ include("../../core/class/admin_model.php");
 $email = postRequest('email');
 $password = postRequest('password');
 
-$stmt = $con->prepare("SELECT * FROM `admins` WHERE `a_email` = ?");
-$stmt->execute(array($email));
+$stmt = selectFromAdminsByEmail($email, $con);
 
 $count = $stmt->rowCount();
 
