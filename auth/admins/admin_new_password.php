@@ -31,7 +31,7 @@ if ($count > 0) {
             $response = errorState(400, 'The password is very weak');
         }
     } else {
-        $response = errorState(400, 'You can\'t use the the same previous password');
+        $response = errorState(400, 'You can\'t use the same previous password');
     }
 } else {
     $response = errorState(409, 'The adminId you entered does not exist');
