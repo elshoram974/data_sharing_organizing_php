@@ -268,6 +268,39 @@
 								"description": "# Check verify code Api Documentation\n\n## Check verify code for users By user id\n\nCheck verify code for user.\n\n- **Endpoint:** `/check_verify_code.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The id of the user. |\n| `code` | String | The code that was sent to the user is less than an hour ago. |\n| `verificationType` | String | Should be `create_email` or `forgot_password`. |\n\n### Request Example\n\n``` json\n{\n  \"userId\": 3,\n  \"code\": \"123456\",\n  \"verificationType\": \"create_email\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"user\": {  \n\"user_id\": 3,  \n\"user_first_name\": \"John\",  \n\"user_last_name\": \"Doe\",  \n\"user_email\": \"[elshora@gmail.com1](https://mailto:elshora@gmail.com1)\",  \n\"user_password\": \"$2y$10$2q0T8C1GoqguN9qLFZAXKuJljuc3WkNFIsJqOfLrQiBbcRetdaXba\",  \n\"user_provider\": \"email_password\",  \n\"user_is_verified\": true, // always true \n\"user_lastlogin\": \"2024-01-25 05:38:50\",  \n\"user_createdat\": \"2024-01-25 05:38:50\",  \n\"user_image\": null, //type string \n\"user_role\": \"personal_user\"  \n}  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the id is not exist in database\n    \n\n``` json\n{\n \"status\": \"Failure\",\n \"code\": 401,\n \"message\": \"The userId you entered does not exist\"\n }\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    When the `code` is incorrect\n    \n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 400,  \n   \"message\": \"Invalid verification code\"  \n  }\n\n ```\n\nOr when the `code` was sent more than an hour ago.\n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 400,  \n   \"message\": \"The verification code has expired. we sent another code\"  \n  }\n\n ```\n\nOr when the `verificationType` is not `create_email` or `forgot_password`.\n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 400,  \n   \"message\": \"Invalid verification type.\"  \n  }\n\n ```\n\nOr you have to fill `userId` ,`verificationType` and `code` .. if you don't fill them or when you forgot one of the post body\n\n``` json\n {  \n \"status\": \"Failure\",  \n \"code\": 400,  \n \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"  \n }\n\n ```"
 							},
 							"response": []
+						},
+						{
+							"name": "new_password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userId",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "elshora@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{usersAuth}}/new_password.php",
+									"host": [
+										"{{usersAuth}}"
+									],
+									"path": [
+										"new_password.php"
+									]
+								},
+								"description": "# New Password Api Documentation\n\n## Create a New password\n\nCreates a new pass to the user.\n\n- **Endpoint:** `/new_password.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n| `newPassword` | String | Password for the user. Minimum length: 8 chars. invalid the last password |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"1\",\n  \"newPassword\": \"StrongPassword123\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"user\": {  \n\"user_id\": 1,  \n\"user_first_name\": \"John\",  \n\"user_last_name\": \"Doe\",  \n\"user_email\": \"[elshora@gmail.com1](https://mailto:elshora@gmail.com1)\",  \n\"user_password\": \"$2y$10$2q0T8C1GoqguN9qLFZAXKuJljuc3WkNFIsJqOfLrQiBbcRetdaXba\",  \n\"user_provider\": \"email_password\",  \n\"user_is_verified\": false,  \n\"user_lastlogin\": \"2024-01-25 05:38:50\",  \n\"user_createdat\": \"2024-01-25 05:38:50\",  \n\"user_image\": null, //type string \n\"user_role\": \"personal_user\"  \n}  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 409)**  \n    When the userId is not exist in database\n    \n    ``` json\n          {\n          \"status\": \"Failure\",\n          \"code\": 409,\n          \"message\": \"The userId you entered does not exist\"\n          }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 400)** When the length of the password is lesser than 8\n    \n    ``` json\n      {\n      \"status\": \"Failure\",\n      \"code\": 400,\n      \"message\": \"The password is very weak\"\n      }\n    \n     ```\n    \n\nWhen the new password is the same last password\n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"message\": \"You can't use the the same previous password\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
 						}
 					]
 				}
