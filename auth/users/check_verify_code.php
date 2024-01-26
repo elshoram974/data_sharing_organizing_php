@@ -6,50 +6,53 @@ include("../../core/class/verification/verification_code_model.php");
 
 $userId = postRequest('userId');
 $code = postRequest('code');
+$verificationType = postRequest('verificationType');
+if ($verificationType == VerificationType::forgotPassword || $verificationType == VerificationType::createEmail) {
+    $stmt = selectFromAppUserById($userId, $con);
 
-$stmt = selectFromAppUserById($userId, $con);
+    $count = $stmt->rowCount();
 
-$count = $stmt->rowCount();
-
-if ($count > 0) {
-    $array = $stmt->fetch(PDO::FETCH_ASSOC);
-    $user =  User::fromArray($array);
-
-    $stmt = $con->prepare("SELECT * FROM `verification_codes` WHERE `verification_user` = ?");
-    $stmt->execute([$user->id]);
-    if ($stmt->rowCount() > 0) {
+    if ($count > 0) {
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
-        $verificationCode =  VerificationCode::fromArray($array);
+        $user =  User::fromArray($array);
+
+        $stmt = $con->prepare("SELECT * FROM `verification_codes` WHERE `verification_user` = ?");
+        $stmt->execute([$user->id]);
+        if ($stmt->rowCount() > 0) {
+            $array = $stmt->fetch(PDO::FETCH_ASSOC);
+            $verificationCode =  VerificationCode::fromArray($array);
 
 
-        $timeDifference = getDifferenceTimeFromNow($verificationCode->createDate);
-        if ($timeDifference <= 3600) {
+            $timeDifference = getDifferenceTimeFromNow($verificationCode->createDate);
+            if ($timeDifference <= 3600) {
 
-            if ($verificationCode->code == $code) {
+                if ($verificationCode->code == $code) {
 
-                deleteUserVerifyCode($verificationCode->id, $con);
+                    deleteUserVerifyCode($verificationCode->id, $con);
 
-                $stmt = $con->prepare("UPDATE `app_users` SET `user_is_verified`= ? WHERE `user_id` = ?");
-                $stmt->execute([true, $user->id]);
+                    $stmt = $con->prepare("UPDATE `app_users` SET `user_is_verified`= ? WHERE `user_id` = ?");
+                    $stmt->execute([true, $user->id]);
 
-                $stmt = selectFromAppUserById($user->id, $con);
-                $array = $stmt->fetch(PDO::FETCH_ASSOC);
-                $user =  User::fromArray($array);
+                    $stmt = selectFromAppUserById($user->id, $con);
+                    $array = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $user =  User::fromArray($array);
 
-                $response = successState('user', $user->toArray());
+                    $response = successState('user', $user->toArray());
+                } else {
+                    $response = errorState(400, 'Invalid verification code');
+                }
             } else {
-                $response = errorState(400, 'Invalid verification code');
+                sendUserVerifyEmail($user->email, $verificationType);
+                $response = errorState(400, 'The verification code has expired. we sent another code');
             }
         } else {
-            sendUserVerifyEmail($user->email);
+            sendUserVerifyEmail($user->email, $verificationType);
             $response = errorState(400, 'The verification code has expired. we sent another code');
         }
     } else {
-        sendUserVerifyEmail($user->email);
-        $response = errorState(400, 'The verification code has expired. we sent another code');
+        $response = errorState(401, 'The userId you entered does not exist');
     }
 } else {
-    $response = errorState(401, 'The userId you entered does not exist');
+    $response = errorState(400, 'Invalid verification type.');
 }
-
 echo json_encode($response);

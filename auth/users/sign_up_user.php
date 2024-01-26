@@ -1,6 +1,7 @@
 <?php
 include("../../connect.php");
 include("../../core/class/app_user/app_user_model.php");
+include("../../core/class/verification/verification_type_enum.php");
 
 
 $name = postRequest('name', true);
@@ -26,7 +27,7 @@ if ($count == 0) {
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
         $user =  User::fromArray($array);
 
-        sendUserVerifyEmail($email);
+        sendUserVerifyEmail($email, verificationType::createEmail);
 
 
         $response = successState('user', $user->toArray());

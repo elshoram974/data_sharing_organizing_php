@@ -1,5 +1,5 @@
 <?php
-function sendUserVerifyEmail(string $email)
+function sendUserVerifyEmail(string $email, string $verificationType)
 {
 }
 

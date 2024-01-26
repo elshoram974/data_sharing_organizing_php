@@ -1,6 +1,7 @@
 <?php
 include("../../connect.php");
 include("../../core/class/app_user/app_user_model.php");
+include("../../core/class/verification/verification_type_enum.php");
 
 
 $email = postRequest('email');
@@ -21,7 +22,7 @@ if ($count > 0) {
     // Hash the provided password and compare it with the stored hash
     elseif (password_verify($password, $user->password)) {
 
-        if (!$user->isVerified) sendUserVerifyEmail($email);
+        if (!$user->isVerified) sendUserVerifyEmail($email, verificationType::createEmail);
 
         $user->lastLogin = new DateTime(updateLastLogin($con, $user->id));
         $response = successState('user', $user->toArray());
