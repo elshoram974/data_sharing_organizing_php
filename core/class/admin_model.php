@@ -7,7 +7,7 @@ class Admin
     public string $lastName;
     public string $email;
     public string $password;
-    public ?int $verificationCode;
+    public ?string $verificationCode;
     public DateTime $lastLogin;
     public DateTime $createdAt;
 
@@ -17,7 +17,7 @@ class Admin
         string $lastName,
         string $email,
         string $password,
-        ?int $verificationCode,
+        ?string $verificationCode,
         DateTime $lastLogin,
         DateTime $createdAt,
     ) {
