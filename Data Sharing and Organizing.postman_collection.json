@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "484998ac-28b7-4998-acd6-67a7832fadd3",
+		"name": "Data Sharing and Organizing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29286079",
+		"_collection_link": "https://orange-spaceship-516623.postman.co/workspace/Data-sharing-and-organizing-wor~f4b0d81f-9596-4b20-8525-fb62a27dd9bb/collection/29286079-484998ac-28b7-4998-acd6-67a7832fadd3?action=share&source=collection_link&creator=29286079"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "admins",
+					"item": [
+						{
+							"name": "login_admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "elshora@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "elshora@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminsAuth}}/login_admin.php",
+									"host": [
+										"{{adminsAuth}}"
+									],
+									"path": [
+										"login_admin.php"
+									]
+								},
+								"description": "# Login Api Documentation\n\n## Login Admins\n\nLogin to the admin panel to control the system.\n\n- **Endpoint:** `/login_admin.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `email` | String | Email address of the admin. |\n| `password` | String | Password for the admin. |\n\n### Request Example\n\n``` json\n{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"StrongPassword123\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin\": {\n        \"a_id\": 1,\n        \"a_first_name\": \"Mohammed\",\n        \"a_last_name\": \"El Shora\",\n        \"a_email\": \"elshora@gmail.com\",\n        \"a_password\": \"$2y$10$Xx9juMyB.B8pHcQvjoPuZOT7DtBkz2Pqii6TiQEG9TUvbpPEva6m6\",\n        \"a_verified_code\": null,//type int\n        \"a_last_login\": \"2024-01-25 15:49:11\",\n        \"a_create_at\": \"2024-01-23 04:56:39\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the email is incorrect\n    \n\n``` json\n{\n \"status\": \"Failure\",\n \"code\": 401,\n \"message\": \"The email you entered does not exist\"\n }\n\n ```\n\nor When the password is incorrect\n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 401,  \n   \"message\": \"Error in password\"  \n  }\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    You have to fill email and password .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n {  \n \"status\": \"Failure\",  \n \"code\": 400,  \n \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"  \n }\n\n ```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "login_user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "elshora@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "elshora@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{usersAuth}}/login_user.php",
+									"host": [
+										"{{usersAuth}}"
+									],
+									"path": [
+										"login_user.php"
+									]
+								},
+								"description": "# Login Api Documentation\n\n## Login users By Email and Password\n\nLogin to user account that is no providers.\n\n- **Endpoint:** `/login_user.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `email` | String | Email address of the user. |\n| `password` | String | Password for the user. |\n\n### Request Example\n\n``` json\n{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"StrongPassword123\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"user\": {  \n\"user_id\": 5,  \n\"user_first_name\": \"John\",  \n\"user_last_name\": \"Doe\",  \n\"user_email\": \"[elshora@gmail.com1](https://mailto:elshora@gmail.com1)\",  \n\"user_password\": \"$2y$10$2q0T8C1GoqguN9qLFZAXKuJljuc3WkNFIsJqOfLrQiBbcRetdaXba\",  \n\"user_provider\": \"email_password\",  \n\"user_is_verified\": false,  \n\"user_lastlogin\": \"2024-01-25 05:38:50\",  \n\"user_createdat\": \"2024-01-25 05:38:50\",  \n\"user_image\": null, //type string \n\"user_role\": \"personal_user\"  \n}  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the email is incorrect\n    \n\n``` json\n{\n \"status\": \"Failure\",\n \"code\": 401,\n \"message\": \"The email you entered does not exist\"\n }\n\n ```\n\nor When the password is incorrect\n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 401,  \n   \"message\": \"Error in password\"  \n  }\n\n ```\n\nor if provider is not `'email_password'`\n\n``` json\n{  \n\"status\": \"Failure\",  \n\"code\": 401,  \n\"message\": \"User created by another provider\"  \n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    You have to fill email and password .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n {  \n \"status\": \"Failure\",  \n \"code\": 400,  \n \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"  \n }\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "login_provider",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "111 Doe",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "elshora@sgmail.com1s",
+											"type": "text"
+										},
+										{
+											"key": "provider",
+											"value": "facebook",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{usersAuth}}/login_provider.php",
+									"host": [
+										"{{usersAuth}}"
+									],
+									"path": [
+										"login_provider.php"
+									]
+								},
+								"description": "# Login provider Api Documentation\n\n## Login users By social apps\n\nLogin to user account or create new one with social.\n\n- **Endpoint:** `/login_provider.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `name` | String | Full name of the user. |\n| `email` | String | Email address of the user. |\n| `provider` | String | The provider type `google` or `facebook`. |\n\n### Request Example\n\n``` json\n{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"provider\": \"facebook\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"user\": {  \n\"user_id\": 5,  \n\"user_first_name\": \"John\",  \n\"user_last_name\": \"Doe\",  \n\"user_email\": \"[elshora@gmail.com1](https://mailto:elshora@gmail.com1)\",  \n\"user_password\": \"User created by another provider\",  \n\"user_provider\": \"google\",  \n\"user_is_verified\": true, // it always true \n\"user_lastlogin\": \"2024-01-25 05:38:50\",  \n\"user_createdat\": \"2024-01-25 05:38:50\",  \n\"user_image\": null, //type string \n\"user_role\": \"personal_user\"  // it always personal\n}  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the email is used with a different provider than the one initially registered with\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 401,\n  \"message\": \"User created by another provider\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "sign_up_user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "John Doe",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "mohammedriyad54@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "userRole",
+											"value": "personal_user",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{usersAuth}}/sign_up_user.php",
+									"host": [
+										"{{usersAuth}}"
+									],
+									"path": [
+										"sign_up_user.php"
+									]
+								},
+								"description": "# Sign up Api Documentation\n\n## Create a New User\n\nCreates a new user in the system.\n\n- **Endpoint:** `/create_user.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `name` | String | Full name of the user. |\n| `email` | String | Email address of the user. |\n| `password` | String | Password for the user. Minimum length: 8 chars. |\n| `userRole` | String | Role of the user in the application. |\n\n### Request Example\n\n``` json\n{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"StrongPassword123\",\n  \"userRole\": \"admin\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"user\": {  \n\"user_id\": 5,  \n\"user_first_name\": \"John\",  \n\"user_last_name\": \"Doe\",  \n\"user_email\": \"[elshora@gmail.com1](https://mailto:elshora@gmail.com1)\",  \n\"user_password\": \"$2y$10$2q0T8C1GoqguN9qLFZAXKuJljuc3WkNFIsJqOfLrQiBbcRetdaXba\",  \n\"user_provider\": \"email_password\",  \n\"user_is_verified\": false,  \n\"user_lastlogin\": \"2024-01-25 05:38:50\",  \n\"user_createdat\": \"2024-01-25 05:38:50\",  \n\"user_image\": null, //type string \n\"user_role\": \"personal_user\"  \n}  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 409)**  \n    When the email is registered before\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 409,\n  \"message\": \"This email already exists\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    When the length of the password is lesser than 8\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"message\": \"The password is very weak\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "check_verify_code",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userId",
+											"value": "31",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{usersAuth}}/check_verify_code.php",
+									"host": [
+										"{{usersAuth}}"
+									],
+									"path": [
+										"check_verify_code.php"
+									]
+								},
+								"description": "# Check verify code Api Documentation\n\n## Check verify code for users By user id\n\nCheck verify code for user.\n\n- **Endpoint:** `/check_verify_code.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The id of the user. |\n| `code` | String | The code that was sent to the user is less than an hour ago. |\n\n### Request Example\n\n``` json\n{\n  \"userId\": 3,\n  \"password\": \"123456\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"user\": {  \n\"user_id\": 3,  \n\"user_first_name\": \"John\",  \n\"user_last_name\": \"Doe\",  \n\"user_email\": \"[elshora@gmail.com1](https://mailto:elshora@gmail.com1)\",  \n\"user_password\": \"$2y$10$2q0T8C1GoqguN9qLFZAXKuJljuc3WkNFIsJqOfLrQiBbcRetdaXba\",  \n\"user_provider\": \"email_password\",  \n\"user_is_verified\": true, // always true \n\"user_lastlogin\": \"2024-01-25 05:38:50\",  \n\"user_createdat\": \"2024-01-25 05:38:50\",  \n\"user_image\": null, //type string \n\"user_role\": \"personal_user\"  \n}  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the id is not exist in database\n    \n\n``` json\n{\n \"status\": \"Failure\",\n \"code\": 401,\n \"message\": \"The userId you entered does not exist\"\n }\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    When the `code` is incorrect\n    \n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 400,  \n   \"message\": \"Invalid verification code\"  \n  }\n\n ```\n\nOr when the `code` was sent more than an hour ago.\n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 400,  \n   \"message\": \"The verification code has expired. we sent another code\"  \n  }\n\n ```\n\nOr you have to fill `userId` and `code` .. if you don't fill them or when you forgot one of the post body\n\n``` json\n {  \n \"status\": \"Failure\",  \n \"code\": 400,  \n \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"  \n }\n\n ```"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

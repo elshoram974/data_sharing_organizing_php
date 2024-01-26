@@ -6,7 +6,7 @@ include("../../core/class/app_user/app_user_model.php");
 $email = postRequest('email');
 $password = postRequest('password');
 
-$stmt = selectFromAppUser($email, $con);
+$stmt = selectFromAppUserByEmail($email, $con);
 
 $count = $stmt->rowCount();
 

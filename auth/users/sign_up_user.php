@@ -8,7 +8,7 @@ $email = postRequest('email');
 $password = postRequest('password');
 $userRole = postRequest('userRole');
 
-$stmt = selectFromAppUser($email, $con);
+$stmt = selectFromAppUserByEmail($email, $con);
 $count = $stmt->rowCount();
 
 if ($count == 0) {
@@ -22,7 +22,7 @@ if ($count == 0) {
         $stmt = $con->prepare("INSERT INTO `app_users`(`user_email`, `user_first_name`, `user_last_name`, `user_password`, `user_provider`, `user_role`) VALUES (?,?,?,?,?,?)");
         $stmt->execute([$email, $firstName, $lastName, makeHashPassword($password), 'email_password', $userRole]);
 
-        $stmt = selectFromAppUser($email, $con);
+        $stmt = selectFromAppUserByEmail($email, $con);
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
         $user =  User::fromArray($array);
 

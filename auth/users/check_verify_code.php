@@ -4,10 +4,10 @@ include '../../connect.php';
 include("../../core/class/app_user/app_user_model.php");
 include("../../core/class/verification/verification_code_model.php");
 
-$email = postRequest('email');
+$userId = postRequest('userId');
 $code = postRequest('code');
 
-$stmt = selectFromAppUser($email, $con);
+$stmt = selectFromAppUserById($userId, $con);
 
 $count = $stmt->rowCount();
 
@@ -32,7 +32,7 @@ if ($count > 0) {
                 $stmt = $con->prepare("UPDATE `app_users` SET `user_is_verified`= ? WHERE `user_id` = ?");
                 $stmt->execute([true, $user->id]);
 
-                $stmt = selectFromAppUser($user->email, $con);
+                $stmt = selectFromAppUserById($user->id, $con);
                 $array = $stmt->fetch(PDO::FETCH_ASSOC);
                 $user =  User::fromArray($array);
 
@@ -41,15 +41,15 @@ if ($count > 0) {
                 $response = errorState(400, 'Invalid verification code');
             }
         } else {
-            sendUserVerifyEmail($email);
+            sendUserVerifyEmail($user->email);
             $response = errorState(400, 'The verification code has expired. we sent another code');
         }
     } else {
-        sendUserVerifyEmail($email);
+        sendUserVerifyEmail($user->email);
         $response = errorState(400, 'The verification code has expired. we sent another code');
     }
 } else {
-    $response = errorState(401, 'The email you entered does not exist');
+    $response = errorState(401, 'The userId you entered does not exist');
 }
 
 echo json_encode($response);

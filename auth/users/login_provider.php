@@ -6,7 +6,7 @@ $name = postRequest('name', true);
 $email = postRequest('email');
 $provider = postRequest('provider');
 
-$stmt = selectFromAppUser($email, $con);
+$stmt = selectFromAppUserByEmail($email, $con);
 
 $count = $stmt->rowCount();
 
@@ -28,7 +28,7 @@ if ($count > 0) {
     $stmt = $con->prepare("INSERT INTO `app_users`(`user_email`, `user_first_name`, `user_last_name`, `user_provider`, `user_role`, `user_is_verified`) VALUES (?,?,?,?,?,?)");
     $stmt->execute([$email, $firstName, $lastName, $provider, 'personal_user', 1]);
 
-    $stmt = selectFromAppUser($email, $con);
+    $stmt = selectFromAppUserByEmail($email, $con);
     $array = $stmt->fetch(PDO::FETCH_ASSOC);
     $user =  User::fromArray($array);
 
