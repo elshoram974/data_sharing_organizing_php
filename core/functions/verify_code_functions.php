@@ -46,6 +46,7 @@ function htmlTemplate(int $verificationCode, string $userName = 'User', string $
     $htmlTemplate = str_replace('{{USER_NAME}}', $userName, $htmlTemplate);
     $htmlTemplate = str_replace('{{VERIFICATION_CODE}}', $verificationCode, $htmlTemplate);
     $htmlTemplate = str_replace('{{EMAIL_SUBJECT}}', $subject, $htmlTemplate);
+    $htmlTemplate = str_replace('{{CURRENT_YEAR}}', date('Y'), $htmlTemplate);
 
     return $htmlTemplate;
 }
