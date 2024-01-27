@@ -32,6 +32,8 @@ function sendMail(string $toEmail, string $toName = '', string $subject, string 
         $mail->Body    = $body;
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
+        $mail->Priority = 1;
+
         $mail->send();
     } catch (Exception $e) {
         echo json_encode(errorState(500, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"));

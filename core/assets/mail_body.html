@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{EMAIL_SUBJECT}}</title>
+</head>
+
+<body style="margin: 0; padding: 0; font-family: sans-serif;">
+
+    <table style="width: 100%; background-color: #f2f2f2; border-collapse: collapse;">
+        <tr>
+            <td style="padding: 20px;">
+
+                <!-- Header Section -->
+                <table style="width: 100%; border-bottom: 1px solid #ccc; margin-bottom: 20px;">
+                    <tr>
+                        <td style="text-align: center;">
+                            <a href="https://thiet.mrecode.com"><img
+                                    src="https://thiet.mrecode.com/api/core/assets/logo.png" alt="Logo"
+                                    style="width: 150px;"></a>
+                            <h2 style="font-size: 24px; color: #F5576C; margin-top: 10px;">{{EMAIL_SUBJECT}}</h2>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Content Section -->
+                <table
+                    style="width: 100%; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                    <tr>
+                        <td>
+                            <h1 style="font-size: 24px; color: #F5576C;">Hi {{USER_NAME}},</h1>
+                            <p style="font-size: 16px; line-height: 1.5; color: #333;">Welcome to Sharikna! Please
+                                verify
+                                your email address to complete.</p>
+                            <p style="font-size: 16px; line-height: 1.5; color: #333;">Your verification code is:</p>
+                            <p
+                                style="font-size: 24px; font-weight: bold; text-align: center; color: #F5576C; margin-top: 20px; margin-bottom: 20px;">
+                                {{VERIFICATION_CODE}}</p>
+                            <p style="font-size: 16px; line-height: 1.5; color: #333;">Enter this code in the
+                                verification field on
+                                our website or app to complete the process.</p>
+                            <p style="font-size: 16px; line-height: 1.5; color: #333;">If you didn't request this
+                                verification,
+                                please disregard this email.</p>
+                            <p style="font-size: 16px; line-height: 1.5; color: #333;">Thanks,<br>Sharikna Team</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Footer Section -->
+                <table style="width: 100%; background-color: #f2f2f2; padding: 20px; border-top: 1px solid #ccc;">
+                    <tr>
+                        <td style="text-align: center;">
+                            <p style="font-size: 14px; color: #555;">Copyright © THIET <span id="currentYear"></span>
+                            </p>
+
+                            <!-- JavaScript to set the current year -->
+                            <script>
+                                document.getElementById('currentYear').innerHTML = new Date().getFullYear();
+                            </script>
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
