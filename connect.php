@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: https://mrecode.com');
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Credentials: true');
 header('Content-Type: application/json');
 
