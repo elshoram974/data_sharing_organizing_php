@@ -28,7 +28,7 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
 
                 if ($verificationCode->code == $code) {
 
-                    deleteUserVerifyCode($verificationCode->id, $con);
+                    deleteUserVerifyCode($user->id, $con);
 
                     $stmt = $con->prepare("UPDATE `app_users` SET `user_is_verified`= ? WHERE `user_id` = ?");
                     $stmt->execute([true, $user->id]);
@@ -42,11 +42,11 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
                     $response = errorState(400, 'Invalid verification code');
                 }
             } else {
-                sendUserVerifyEmail($user->email, $verificationType);
+                sendUserVerifyEmail($con, $user, $verificationType);
                 $response = errorState(400, 'The verification code has expired. we sent another code');
             }
         } else {
-            sendUserVerifyEmail($user->email, $verificationType);
+            sendUserVerifyEmail($con, $user, $verificationType);
             $response = errorState(400, 'The verification code has expired. we sent another code');
         }
     } else {

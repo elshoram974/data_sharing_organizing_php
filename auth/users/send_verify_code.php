@@ -18,7 +18,7 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
         if ($user->provider != UserProvider::emailPassword) {
             $response = errorState(403, 'User is not email_password to send verification code.');
         } else {
-            sendUserVerifyEmail($user->email, $verificationType);
+            sendUserVerifyEmail(con: $con, user: $user, verificationType: $verificationType);
             $response = successState('user', $user->toArray());
         }
     } else {

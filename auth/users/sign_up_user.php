@@ -18,7 +18,7 @@ if ($count == 0) {
 
 
         $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: UserProvider::emailPassword, userRole: $userRole, userIsVerified: false);
-        sendUserVerifyEmail($email, verificationType::createEmail);
+        sendUserVerifyEmail($con, $user, verificationType::createEmail);
 
         $response = successState('user', $user->toArray());
     } else {
