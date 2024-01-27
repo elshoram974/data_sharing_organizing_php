@@ -15,7 +15,9 @@ if ($count > 0) {
 
     $storedHash = $user->password;
 
-    if (!password_verify($newPassword, $storedHash)) {
+    if ($user->provider != UserProvider::emailPassword) {
+        $response = errorState(403, 'User is not email_password to make new pass');
+    } elseif (!password_verify($newPassword, $storedHash)) {
 
         if (strlen($newPassword) >= 8) {
 

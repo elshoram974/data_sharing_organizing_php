@@ -16,19 +16,9 @@ if ($count == 0) {
 
     if (strlen($password) >= 8) {
 
-        $nameParts = explode(' ', $name ?? 'No Name');
-        $firstName = $nameParts[0];
-        $lastName = trim(implode(' ', array_slice($nameParts, 1)));
 
-        $stmt = $con->prepare("INSERT INTO `app_users`(`user_email`, `user_first_name`, `user_last_name`, `user_password`, `user_provider`, `user_role`) VALUES (?,?,?,?,?,?)");
-        $stmt->execute([$email, $firstName, $lastName, makeHashPassword($password), 'email_password', $userRole]);
-
-        $stmt = selectFromAppUserByEmail($email, $con);
-        $array = $stmt->fetch(PDO::FETCH_ASSOC);
-        $user =  User::fromArray($array);
-
+        $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: UserProvider::emailPassword, userRole: $userRole, userIsVerified: false);
         sendUserVerifyEmail($email, verificationType::createEmail);
-
 
         $response = successState('user', $user->toArray());
     } else {

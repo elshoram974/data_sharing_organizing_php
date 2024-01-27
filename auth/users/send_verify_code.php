@@ -15,9 +15,12 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
     if ($count > 0) {
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
         $user =  User::fromArray($array);
-
-        sendUserVerifyEmail($user->email, $verificationType);
-        $response = successState('user', $user->toArray());
+        if ($user->provider != UserProvider::emailPassword) {
+            $response = errorState(403, 'User is not email_password to send verification code.');
+        } else {
+            sendUserVerifyEmail($user->email, $verificationType);
+            $response = successState('user', $user->toArray());
+        }
     } else {
         $response = errorState(401, 'The email you entered does not exist');
     }

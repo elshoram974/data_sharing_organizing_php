@@ -15,20 +15,7 @@ if ($count > 0) {
     $array = $stmt->fetch(PDO::FETCH_ASSOC);
 
     $user =  User::fromArray($array);
-
-    if ($user->password == 'User created by another provider') {
-        $response = errorState(401, 'User created by another provider');
-    }
-    // Hash the provided password and compare it with the stored hash
-    elseif (password_verify($password, $user->password)) {
-
-        if (!$user->isVerified) sendUserVerifyEmail($email, verificationType::createEmail);
-
-        $user->lastLogin = new DateTime(updateLastLogin($con, $user->id));
-        $response = successState('user', $user->toArray());
-    } else {
-        $response = errorState(401, 'Error in password');
-    }
+    $response = loginToUser(con: $con, user: $user, password: $password, provider: UserProvider::emailPassword);
 } else {
     $response = errorState(401, 'The email you entered does not exist');
 }
