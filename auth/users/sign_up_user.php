@@ -17,7 +17,7 @@ if ($count == 0) {
     if (strlen($password) >= 8) {
 
 
-        $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: UserProvider::emailPassword, userRole: $userRole, userIsVerified: false);
+        $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: UserProvider::emailPassword, userRole: $userRole);
         sendUserVerifyEmail($con, $user, verificationType::createEmail);
 
         $response = successState('user', $user->toArray());
