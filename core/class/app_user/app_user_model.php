@@ -15,6 +15,15 @@ abstract class UserRole
     const businessAdmin = 'business_admin';
 }
 
+abstract class UserStatus
+{
+    const active = 'active';
+    const inactive = 'inactive';
+    const suspended = 'suspended';
+    const deleted = 'deleted';
+    const pending = 'pending';
+}
+
 // Class for User
 class User
 {
@@ -24,11 +33,14 @@ class User
     public string $email;
     public string $password;
     public string $provider;
-    public bool $isVerified;
     public DateTime $lastLogin;
     public DateTime $createdAt;
     public ?string $image;
     public string $role;
+    public string $status;
+    public ?string $statusMessage;
+
+    public bool $isVerified;
 
     public function __construct(
         int $id,
@@ -37,11 +49,12 @@ class User
         string $email,
         string $password,
         string $provider = UserProvider::emailPassword,
-        bool $isVerified = false,
         DateTime $lastLogin,
         DateTime $createdAt,
         ?string $image,
         string $role,
+        string $status = UserStatus::pending,
+        string $statusMessage,
     ) {
         $this->id = $id;
         $this->firstName = $firstName;
@@ -49,11 +62,13 @@ class User
         $this->email = $email;
         $this->password = $password;
         $this->provider = $provider;
-        $this->isVerified = $isVerified;
         $this->lastLogin = $lastLogin;
         $this->createdAt = $createdAt;
         $this->image = $image;
         $this->role = $role;
+        $this->status = $status;
+        $this->statusMessage = $statusMessage;
+        $this->isVerified = !($this->status == UserStatus::pending && $this->statusMessage == 'want to verify the account');
     }
 
 
@@ -71,11 +86,12 @@ class User
             $data['user_email'],
             $data['user_password'],
             $data['user_provider'],
-            $data['user_is_verified'] == 1 ? true : false,
             $lastLogin,
             $createdAt,
             $data['user_image'],
             $data['user_role'],
+            $data['user_status'],
+            $data['user_status_message'],
         );
     }
 
@@ -89,11 +105,12 @@ class User
                 'user_email' => $this->email,
                 'user_password' => $this->password,
                 'user_provider' => $this->provider,
-                'user_is_verified' => $this->isVerified,
                 'user_lastlogin' => $this->lastLogin->format('Y-m-d H:i:s'),
                 'user_createdat' => $this->createdAt->format('Y-m-d H:i:s'),
                 'user_image' => $this->image,
                 'user_role' => $this->role,
+                'user_status' => $this->status,
+                'user_status_message' => $this->statusMessage,
             );
     }
 }

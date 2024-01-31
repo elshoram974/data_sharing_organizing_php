@@ -28,13 +28,13 @@ if ($count > 0) {
 
             $response = successState('admin', $admin->toArray());
         } else {
-            $response = errorState(400, 'The password is very weak');
+            $response = errorState(400, 'edit-error', 'The password is very weak');
         }
     } else {
-        $response = errorState(400, 'You can\'t use the same previous password');
+        $response = errorState(400, 'edit-error', 'You can\'t use the same previous password');
     }
 } else {
-    $response = errorState(409, 'The adminId you entered does not exist');
+    $response = errorState(409, 'auth-error', 'The adminId you entered does not exist');
 }
 
 echo json_encode($response);

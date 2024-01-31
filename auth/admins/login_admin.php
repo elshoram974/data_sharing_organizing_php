@@ -22,10 +22,10 @@ if ($count > 0) {
         $admin->lastLogin = new DateTime(updateAdminLastLogin($con, $admin->id));
         $response = successState('admin', $admin->toArray());
     } else {
-        $response = errorState(401, 'Error in password');
+        $response = errorState(401, 'auth-error', 'Error in password');
     }
 } else {
-    $response = errorState(401, 'The email you entered does not exist');
+    $response = errorState(401, 'auth-error', 'The email you entered does not exist');
 }
 
 echo json_encode($response);

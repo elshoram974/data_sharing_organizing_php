@@ -16,7 +16,7 @@ if ($count > 0) {
     $storedHash = $user->password;
 
     if ($user->provider != UserProvider::emailPassword) {
-        $response = errorState(403, 'User is not email_password to make new pass');
+        $response = errorState(403, 'auth-error', 'User is not email_password to make new pass');
     } elseif (!password_verify($newPassword, $storedHash)) {
 
         if (strlen($newPassword) >= 8) {
@@ -30,13 +30,13 @@ if ($count > 0) {
 
             $response = successState('user', $user->toArray());
         } else {
-            $response = errorState(400, 'The password is very weak');
+            $response = errorState(400, 'edit-error', 'The password is very weak');
         }
     } else {
-        $response = errorState(400, 'You can\'t use the same previous password');
+        $response = errorState(400, 'edit-error', 'You can\'t use the same previous password');
     }
 } else {
-    $response = errorState(409, 'The userId you entered does not exist');
+    $response = errorState(409, 'auth-error', 'The userId you entered does not exist');
 }
 
 echo json_encode($response);

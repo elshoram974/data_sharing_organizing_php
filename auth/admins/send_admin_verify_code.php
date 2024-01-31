@@ -15,7 +15,7 @@ if ($count > 0) {
     sendAdminVerifyEmail($con, $admin);
     $response = successState('admin', $admin->toArray());
 } else {
-    $response = errorState(401, 'The email you entered does not exist');
+    $response = errorState(401, 'auth-error', 'The email you entered does not exist');
 }
 
 echo json_encode($response);

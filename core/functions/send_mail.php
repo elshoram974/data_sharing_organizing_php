@@ -36,7 +36,7 @@ function sendMail(string $toEmail, string $toName = '', string $subject, string 
 
         $mail->send();
     } catch (Exception $e) {
-        echo json_encode(errorState(500, "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"));
+        echo json_encode(errorState(500, 'mail-error', "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"));
         die;
     }
 }

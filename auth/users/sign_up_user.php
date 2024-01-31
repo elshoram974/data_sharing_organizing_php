@@ -22,10 +22,10 @@ if ($count == 0) {
 
         $response = successState('user', $user->toArray());
     } else {
-        $response = errorState(400, 'The password is very weak');
+        $response = errorState(400, 'auth-error', 'The password is very weak');
     }
 } else {
-    $response = errorState(409, 'This email already exists');
+    $response = errorState(409, 'auth-error', 'This email already exists');
 }
 
 echo json_encode($response);

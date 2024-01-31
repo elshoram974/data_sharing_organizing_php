@@ -15,16 +15,20 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
     if ($count > 0) {
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
         $user =  User::fromArray($array);
-        if ($user->provider != UserProvider::emailPassword) {
-            $response = errorState(403, 'User is not email_password to send verification code.');
+        if (!$user->isVerified || $user->status == UserStatus::active) {
+            if ($user->provider != UserProvider::emailPassword) {
+                $response = errorState(403, 'invalid-code-error', 'User is not email_password to send verification code.');
+            } else {
+                sendUserVerifyEmail(con: $con, user: $user, verificationType: $verificationType);
+                $response = successState('user', $user->toArray());
+            }
         } else {
-            sendUserVerifyEmail(con: $con, user: $user, verificationType: $verificationType);
-            $response = successState('user', $user->toArray());
+            $response = errorState(401, 'invalid-code-error', 'You can\'t send code while your account is inactive');
         }
     } else {
-        $response = errorState(401, 'The email you entered does not exist');
+        $response = errorState(401, 'auth-error', 'The email you entered does not exist');
     }
 } else {
-    $response = errorState(400, 'Invalid verification type.');
+    $response = errorState(400, 'invalid-code-error', 'Invalid verification type.');
 }
 echo json_encode($response);

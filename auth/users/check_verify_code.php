@@ -30,8 +30,8 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
 
                     deleteUserVerifyCode($user->id, $con);
 
-                    $stmt = $con->prepare("UPDATE `app_users` SET `user_is_verified`= ? WHERE `user_id` = ?");
-                    $stmt->execute([true, $user->id]);
+                    $stmt = $con->prepare("UPDATE `app_users` SET `user_status`=? ,`user_status_message`=\'?\' WHERE `user_id` = ?");
+                    $stmt->execute([UserStatus::active, null, $user->id]);
 
                     $stmt = selectFromAppUserById($user->id, $con);
                     $array = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -39,20 +39,20 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
 
                     $response = successState('user', $user->toArray());
                 } else {
-                    $response = errorState(400, 'Invalid verification code');
+                    $response = errorState(400, 'invalid-code-error', 'Invalid verification code');
                 }
             } else {
                 sendUserVerifyEmail($con, $user, $verificationType);
-                $response = errorState(400, 'The verification code has expired. we sent another code');
+                $response = errorState(400, 'invalid-code-error', 'The verification code has expired. we sent another code');
             }
         } else {
             sendUserVerifyEmail($con, $user, $verificationType);
-            $response = errorState(400, 'The verification code has expired. we sent another code');
+            $response = errorState(400, 'invalid-code-error', 'The verification code has expired. we sent another code');
         }
     } else {
-        $response = errorState(401, 'The userId you entered does not exist');
+        $response = errorState(401, 'auth-error', 'The userId you entered does not exist');
     }
 } else {
-    $response = errorState(400, 'Invalid verification type.');
+    $response = errorState(400, 'invalid-code-error', 'Invalid verification type.');
 }
 echo json_encode($response);

@@ -1,7 +1,7 @@
 <?php
 function loginToUser(PDO $con, User $user, string $password, string $provider): array
 {
-    if ($user->provider != $provider) return errorState(401, 'User created by another provider');
+    if ($user->provider != $provider) return errorState(401, 'auth-error', 'User created by another provider');
 
     if (password_verify($password, $user->password)) {
 
@@ -10,7 +10,7 @@ function loginToUser(PDO $con, User $user, string $password, string $provider): 
         $user->lastLogin = new DateTime(updateLastLogin($con, $user->id));
         return successState('user', $user->toArray());
     }
-    return errorState(401, 'Error in password');
+    return errorState(401, 'auth-error', 'Error in password');
 }
 function createNewUser(PDO $con, ?string $name, string $email, string $password, string $provider, string $userRole, bool $userIsVerified = false): User
 {

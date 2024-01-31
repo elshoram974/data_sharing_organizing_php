@@ -3,7 +3,7 @@ function postRequest(string $body, bool $canBeEmpty = false): ?string
 {
     $post = $_POST[$body];
     if (!$canBeEmpty && empty($post)) {
-        echo json_encode(errorState(400, "You can't make $body empty. $body: $post"));
+        echo json_encode(errorState(400, "post-error", "You can't make $body empty. $body: $post"));
         exit;
     }
     return $post;

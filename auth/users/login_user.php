@@ -17,7 +17,7 @@ if ($count > 0) {
     $user =  User::fromArray($array);
     $response = loginToUser(con: $con, user: $user, password: $password, provider: UserProvider::emailPassword);
 } else {
-    $response = errorState(401, 'The email you entered does not exist');
+    $response = errorState(401, 'auth-error', 'The email you entered does not exist');
 }
 
 echo json_encode($response);

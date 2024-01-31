@@ -25,10 +25,10 @@ if ($count > 0) {
 
         $response = successState('admin', $admin->toArray());
     } else {
-        $response = errorState(400, 'Invalid verification code');
+        $response = errorState(400, 'invalid-code-error', 'Invalid verification code');
     }
 } else {
-    $response = errorState(401, 'The adminId you entered does not exist');
+    $response = errorState(401, 'auth-error', 'The adminId you entered does not exist');
 }
 
 echo json_encode($response);

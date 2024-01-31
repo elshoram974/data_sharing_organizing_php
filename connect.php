@@ -22,5 +22,5 @@ try {
     include("core/functions/import.php");
 } catch (\Throwable $th) {
     http_response_code(500);
-    echo json_encode(array('status' => 'Failure', "code" => 500, "message" => $th->getMessage()));
+    echo json_encode(array('status' => 'Failure', "code" => 500, "type" => 'server-error', "message" => $th->getMessage()));
 }
