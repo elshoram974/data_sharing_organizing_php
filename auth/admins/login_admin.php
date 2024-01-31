@@ -17,7 +17,7 @@ if ($count > 0) {
     $admin =  Admin::fromArray($array);
 
     // Hash the provided password and compare it with the stored hash
-    if (password_verify($password, $admin->password)) {
+    if ($password == $admin->password) {
 
         $admin->lastLogin = new DateTime(updateAdminLastLogin($con, $admin->id));
         $response = successState('admin', $admin->toArray());
