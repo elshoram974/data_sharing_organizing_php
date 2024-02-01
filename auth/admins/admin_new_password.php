@@ -13,18 +13,14 @@ if ($count > 0) {
     $array = $stmt->fetch(PDO::FETCH_ASSOC);
     $admin =  Admin::fromArray($array);
 
-    $storedHash = $admin->password;
-
-    if (!password_verify($newPassword, $storedHash)) {
+    if ($newPassword != $admin->password) {
 
         if (strlen($newPassword) >= 8) {
 
-            $newHashPassword = makeHashPassword($newPassword);
-
             $stmt = $con->prepare("UPDATE `admins` SET `a_password`=? WHERE `a_id`=?");
-            $stmt->execute([$newHashPassword, $adminId]);
+            $stmt->execute([$newPassword, $adminId]);
 
-            $admin->password = $newHashPassword;
+            $admin->password = $newPassword;
 
             $response = successState('admin', $admin->toArray());
         } else {
