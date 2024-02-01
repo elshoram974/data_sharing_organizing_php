@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 01, 2024 at 09:33 AM
+-- Generation Time: Feb 01, 2024 at 12:03 PM
 -- Server version: 5.7.44-cll-lve
 -- PHP Version: 8.1.16
 SET
@@ -84,11 +84,7 @@ CREATE TABLE `app_users` (
   `user_lastlogin` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_createdat` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_image` varchar(255) DEFAULT NULL,
-  `user_role` enum(
-    'personal_user',
-    'business_user',
-    'business_admin'
-  ) NOT NULL,
+  `user_role` enum('personal_user', 'business_user', 'business_admin') NOT NULL,
   `user_status` enum(
     'active',
     'inactive',
@@ -180,11 +176,7 @@ CREATE TABLE `group_activity` (
   `activity_content` varchar(2000) NOT NULL,
   `activity_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `activity_post_status` enum('admin_agree', 'admin_not_agree') NOT NULL,
-  `activity_notify_others` enum(
-    'notify_all',
-    'notify_not_mute',
-    'without_notify'
-  ) NOT NULL DEFAULT 'notify_not_mute',
+  `activity_notify_others` enum('notify', 'without_notify', 'custom_notify') NOT NULL DEFAULT 'custom_notify' COMMENT 'custom_notify when users is custom and users notify',
   `activity_owner_id` int(11) NOT NULL,
   `activity_last_modified` datetime DEFAULT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
@@ -239,6 +231,7 @@ CREATE TABLE `group_members` (
   `group_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `member_can_interaction` tinyint(1) NOT NULL DEFAULT '0',
+  `member_notification` enum('notify', 'without_notify', 'custom_notify') NOT NULL,
   `member_join_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `member_role` enum('user', 'admin') NOT NULL DEFAULT 'user'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
