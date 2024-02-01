@@ -5,7 +5,8 @@ function loginToUser(PDO $con, User $user, string $password, string $provider): 
 
     if (password_verify($password, $user->password)) {
 
-        if (!$user->isVerified) sendUserVerifyEmail($con, $user, verificationType::createEmail);
+        if ($user->status == UserStatus::pending && $user->statusMessage == 'want to verify the account') sendUserVerifyEmail($con, $user, verificationType::createEmail);
+        elseif ($user->status != UserStatus::active) return errorState(401, 'user-status-error', "$user->status: $user->statusMessage");
 
         $user->lastLogin = new DateTime(updateLastLogin($con, $user->id));
         return successState('user', $user->toArray());

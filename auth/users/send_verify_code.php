@@ -15,7 +15,7 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
     if ($count > 0) {
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
         $user =  User::fromArray($array);
-        if (!$user->isVerified || $user->status == UserStatus::active) {
+        if (($user->status == UserStatus::pending && $user->statusMessage == 'want to verify the account') || $user->status == UserStatus::active) {
             if ($user->provider != UserProvider::emailPassword) {
                 $response = errorState(403, 'invalid-code-error', 'User is not email_password to send verification code.');
             } else {

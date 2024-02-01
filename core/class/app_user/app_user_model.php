@@ -40,7 +40,6 @@ class User
     public string $status;
     public ?string $statusMessage;
 
-    public bool $isVerified;
 
     public function __construct(
         int $id,
@@ -54,7 +53,7 @@ class User
         ?string $image,
         string $role,
         string $status = UserStatus::pending,
-        string $statusMessage,
+        ?string $statusMessage,
     ) {
         $this->id = $id;
         $this->firstName = $firstName;
@@ -68,7 +67,6 @@ class User
         $this->role = $role;
         $this->status = $status;
         $this->statusMessage = $statusMessage;
-        $this->isVerified = !($this->status == UserStatus::pending && $this->statusMessage == 'want to verify the account');
     }
 
 
