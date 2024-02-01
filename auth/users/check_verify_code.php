@@ -16,33 +16,26 @@ if ($verificationType == VerificationType::forgotPassword || $verificationType =
         $array = $stmt->fetch(PDO::FETCH_ASSOC);
         $user =  User::fromArray($array);
 
-        echo 'a';
-
         $stmt = $con->prepare("SELECT * FROM `verification_codes` WHERE `verification_user` = ?");
         $stmt->execute([$user->id]);
         if ($stmt->rowCount() > 0) {
             $array = $stmt->fetch(PDO::FETCH_ASSOC);
             $verificationCode =  VerificationCode::fromArray($array);
 
-            echo 'a';
 
             $timeDifference = getDifferenceTimeFromNow($verificationCode->createDate);
             if ($timeDifference <= 3600) {
 
                 if ($verificationCode->code == $code) {
-                    echo 'a';
 
                     deleteUserVerifyCode($user->id, $con);
-                    echo 'a';
 
                     $stmt = $con->prepare("UPDATE `app_users` SET `user_status`=? ,`user_status_message`=? WHERE `user_id` = ?");
                     $stmt->execute([UserStatus::active, null, $user->id]);
-                    echo 'a';
 
                     $stmt = selectFromAppUserById($user->id, $con);
                     $array = $stmt->fetch(PDO::FETCH_ASSOC);
                     $user =  User::fromArray($array);
-                    echo 'a';
 
                     $response = successState('user', $user->toArray());
                 } else {
