@@ -18,7 +18,7 @@ if ($count > 0) {
     $response = loginToUser(con: $con, user: $user, password: $password, provider: $provider);
 } else {
 
-    $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: $provider, userRole: 'personal_user', userStatus: UserStatus::active, userStatusMessage: null);
+    $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: $provider, userType: UserType::personal, userStatus: UserStatus::active, userStatusMessage: null);
 
     $response = successState('user', $user->toArray());
 }

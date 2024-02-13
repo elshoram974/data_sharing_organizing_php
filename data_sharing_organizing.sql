@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 08, 2024 at 10:25 AM
+-- Generation Time: Feb 13, 2024 at 01:26 PM
 -- Server version: 10.6.16-MariaDB-cll-lve
 -- PHP Version: 8.1.16
 
@@ -107,7 +107,7 @@ CREATE TABLE `app_users` (
   `user_lastlogin` datetime NOT NULL DEFAULT current_timestamp(),
   `user_createdat` datetime NOT NULL DEFAULT current_timestamp(),
   `user_image` varchar(255) DEFAULT NULL,
-  `user_role` enum('personal_user','business_user','business_admin') NOT NULL,
+  `user_type` enum('personal','business') NOT NULL,
   `user_status` enum('active','inactive','suspended','deleted','pending') NOT NULL DEFAULT 'pending',
   `user_status_message` varchar(255) DEFAULT 'want to verify the account'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
@@ -116,9 +116,11 @@ CREATE TABLE `app_users` (
 -- Dumping data for table `app_users`
 --
 
-INSERT INTO `app_users` (`user_id`, `user_email`, `user_first_name`, `user_last_name`, `user_password`, `user_provider`, `user_lastlogin`, `user_createdat`, `user_image`, `user_role`, `user_status`, `user_status_message`) VALUES
-(42, 'elshoram974@gmail.com', 'Mohammed', 'El Shora', '$2y$10$I1ysgWmZ9Ske.CeMzCOpcuaPR9vjIIDN4Sf/L.uGAAMFkiE/GJemW', 'email_password', '2024-02-08 15:50:52', '2024-02-01 01:53:48', NULL, 'personal_user', 'active', NULL),
-(44, 'r7HJAAuguifcFd5ycuWaGq2HfOF3', 'Mohammed', 'Elshora', '$2y$10$PwI33qge..SV9ZJTgWWccefxeU8Hr5e5IbM8/wa0VN6ojUpScXh02', 'facebook', '2024-02-05 01:45:55', '2024-02-01 23:46:55', NULL, 'personal_user', 'active', NULL);
+INSERT INTO `app_users` (`user_id`, `user_email`, `user_first_name`, `user_last_name`, `user_password`, `user_provider`, `user_lastlogin`, `user_createdat`, `user_image`, `user_type`, `user_status`, `user_status_message`) VALUES
+(42, 'elshoram974@gmail.com', 'Mohammed', 'El Shora', '$2y$10$I1ysgWmZ9Ske.CeMzCOpcuaPR9vjIIDN4Sf/L.uGAAMFkiE/GJemW', 'email_password', '2024-02-13 22:22:45', '2024-02-01 01:53:48', NULL, 'personal', 'active', NULL),
+(44, 'r7HJAAuguifcFd5ycuWaGq2HfOF3', 'Mohammed', 'Elshora', '$2y$10$PwI33qge..SV9ZJTgWWccefxeU8Hr5e5IbM8/wa0VN6ojUpScXh02', 'facebook', '2024-02-05 01:45:55', '2024-02-01 23:46:55', NULL, 'personal', 'active', NULL),
+(45, 'mre9743@gmail.com', 'Mohammed', 'El Shora', '$2y$10$ExlqpJ7wW1NdMncnYu2sQOSZa4V4rgBcqB6TJNzD6ZWOroQYCDJ9i', 'email_password', '2024-02-13 22:21:19', '2024-02-13 22:21:19', NULL, 'personal', 'pending', 'want to verify the account'),
+(46, 'elshora@sgmail.com1s2', '111', 'Doe', '$2y$10$/tYQWIg5JRyJswDPZi5SB.GzC.ld3e3HFwFCNtM0urEPWElIjV2Qy', 'facebook', '2024-02-13 22:23:26', '2024-02-13 22:23:26', NULL, 'personal', 'active', NULL);
 
 -- --------------------------------------------------------
 
@@ -131,6 +133,18 @@ CREATE TABLE `business_profiles` (
   `business_name` varchar(255) NOT NULL,
   `business_domain` varchar(255) DEFAULT NULL,
   `business_logo` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `business_users`
+--
+
+CREATE TABLE `business_users` (
+  `business_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `user_role` enum('owner','admin','user') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 -- --------------------------------------------------------
@@ -377,7 +391,7 @@ CREATE TABLE `verification_codes` (
 --
 
 INSERT INTO `verification_codes` (`verification_id`, `verification_user`, `verification_code`, `verification_type`, `verification_created_at`) VALUES
-(11, 42, '294159', 'forgot_password', '2024-02-03 11:25:26');
+(12, 45, '824340', 'create_email', '2024-02-13 22:21:19');
 
 --
 -- Indexes for dumped tables
@@ -414,6 +428,13 @@ ALTER TABLE `app_users`
 --
 ALTER TABLE `business_profiles`
   ADD PRIMARY KEY (`business_user_id`);
+
+--
+-- Indexes for table `business_users`
+--
+ALTER TABLE `business_users`
+  ADD PRIMARY KEY (`business_id`,`user_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `group_activity`
@@ -525,7 +546,7 @@ ALTER TABLE `app_features`
 -- AUTO_INCREMENT for table `app_users`
 --
 ALTER TABLE `app_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `group_activity`
@@ -579,7 +600,7 @@ ALTER TABLE `user_action_history`
 -- AUTO_INCREMENT for table `verification_codes`
 --
 ALTER TABLE `verification_codes`
-  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -590,6 +611,13 @@ ALTER TABLE `verification_codes`
 --
 ALTER TABLE `business_profiles`
   ADD CONSTRAINT `business_profiles_ibfk_1` FOREIGN KEY (`business_user_id`) REFERENCES `app_users` (`user_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `business_users`
+--
+ALTER TABLE `business_users`
+  ADD CONSTRAINT `business_users_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business_profiles` (`business_user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `business_users_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `app_users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `group_activity`

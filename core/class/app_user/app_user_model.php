@@ -7,12 +7,11 @@ abstract class UserProvider
     const emailPassword = 'email_password';
 }
 
-abstract class UserRole
+abstract class UserType
 {
-    const personalUser = 'personal_user';
-    const businessUser = 'business_user';
+    const personal = 'personal';
+    const business = 'business';
 
-    const businessAdmin = 'business_admin';
 }
 
 abstract class UserStatus
@@ -36,7 +35,7 @@ class User
     public DateTime $lastLogin;
     public DateTime $createdAt;
     public ?string $image;
-    public string $role;
+    public string $type;
     public string $status;
     public ?string $statusMessage;
 
@@ -51,7 +50,7 @@ class User
         DateTime $lastLogin,
         DateTime $createdAt,
         ?string $image,
-        string $role,
+        string $type,
         string $status = UserStatus::pending,
         ?string $statusMessage,
     ) {
@@ -64,7 +63,7 @@ class User
         $this->lastLogin = $lastLogin;
         $this->createdAt = $createdAt;
         $this->image = $image;
-        $this->role = $role;
+        $this->type = $type;
         $this->status = $status;
         $this->statusMessage = $statusMessage;
     }
@@ -87,7 +86,7 @@ class User
             $lastLogin,
             $createdAt,
             $data['user_image'],
-            $data['user_role'],
+            $data['user_type'],
             $data['user_status'],
             $data['user_status_message'],
         );
@@ -106,7 +105,7 @@ class User
                 'user_lastlogin' => $this->lastLogin->format('Y-m-d H:i:s'),
                 'user_createdat' => $this->createdAt->format('Y-m-d H:i:s'),
                 'user_image' => $this->image,
-                'user_role' => $this->role,
+                'user_type' => $this->type,
                 'user_status' => $this->status,
                 'user_status_message' => $this->statusMessage,
             );

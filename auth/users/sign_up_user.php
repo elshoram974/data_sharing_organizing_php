@@ -7,7 +7,7 @@ include("../../core/class/verification/verification_type_enum.php");
 $name = postRequest('name', true);
 $email = postRequest('email');
 $password = postRequest('password');
-$userRole = postRequest('userRole');
+$userType = postRequest('userType');
 
 $stmt = selectFromAppUserByEmail($email, $con);
 $count = $stmt->rowCount();
@@ -17,7 +17,7 @@ if ($count == 0) {
     if (strlen($password) >= 8) {
 
 
-        $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: UserProvider::emailPassword, userRole: $userRole);
+        $user = createNewUser(con: $con, name: $name, email: $email, password: $password, provider: UserProvider::emailPassword, userType: $userType);
         sendUserVerifyEmail($con, $user, verificationType::createEmail);
 
         $response = successState('user', $user->toArray());
