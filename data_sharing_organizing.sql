@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 13, 2024 at 01:26 PM
+-- Generation Time: Feb 19, 2024 at 11:33 AM
 -- Server version: 10.6.16-MariaDB-cll-lve
 -- PHP Version: 8.1.16
 
@@ -43,7 +43,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`a_id`, `a_email`, `a_first_name`, `a_last_name`, `a_password`, `a_verified_code`, `a_create_at`, `a_last_login`) VALUES
-(4, 'elshoram974@gmail.com', 'Mohammed', 'El Shora', '12345678', NULL, '2024-01-31 15:33:52', '2024-02-03 11:31:00');
+(4, 'elshoram974@gmail.com', 'Mohammed', 'El Shora', '12345678', NULL, '2024-01-31 15:33:52', '2024-02-18 20:12:31');
 
 -- --------------------------------------------------------
 
@@ -56,6 +56,7 @@ CREATE TABLE `app_features` (
   `feature_name` varchar(50) NOT NULL,
   `feature_description` text DEFAULT NULL,
   `feature_status` enum('enabled','disabled','in_development') NOT NULL DEFAULT 'in_development',
+  `feature_start_version` int(11) NOT NULL DEFAULT 1 COMMENT 'the build version number we want to start with',
   `feature_created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `feature_updated_at` datetime DEFAULT NULL,
   `feature_created_by` varchar(50) NOT NULL,
@@ -117,10 +118,11 @@ CREATE TABLE `app_users` (
 --
 
 INSERT INTO `app_users` (`user_id`, `user_email`, `user_first_name`, `user_last_name`, `user_password`, `user_provider`, `user_lastlogin`, `user_createdat`, `user_image`, `user_type`, `user_status`, `user_status_message`) VALUES
-(42, 'elshoram974@gmail.com', 'Mohammed', 'El Shora', '$2y$10$I1ysgWmZ9Ske.CeMzCOpcuaPR9vjIIDN4Sf/L.uGAAMFkiE/GJemW', 'email_password', '2024-02-13 22:22:45', '2024-02-01 01:53:48', NULL, 'personal', 'active', NULL),
+(42, 'elshoram974@gmail.com', 'Mohammed', 'El Shora', '$2y$10$I1ysgWmZ9Ske.CeMzCOpcuaPR9vjIIDN4Sf/L.uGAAMFkiE/GJemW', 'email_password', '2024-02-18 20:36:58', '2024-02-01 01:53:48', NULL, 'personal', 'active', NULL),
 (44, 'r7HJAAuguifcFd5ycuWaGq2HfOF3', 'Mohammed', 'Elshora', '$2y$10$PwI33qge..SV9ZJTgWWccefxeU8Hr5e5IbM8/wa0VN6ojUpScXh02', 'facebook', '2024-02-05 01:45:55', '2024-02-01 23:46:55', NULL, 'personal', 'active', NULL),
 (45, 'mre9743@gmail.com', 'Mohammed', 'El Shora', '$2y$10$ExlqpJ7wW1NdMncnYu2sQOSZa4V4rgBcqB6TJNzD6ZWOroQYCDJ9i', 'email_password', '2024-02-13 22:21:19', '2024-02-13 22:21:19', NULL, 'personal', 'pending', 'want to verify the account'),
-(46, 'elshora@sgmail.com1s2', '111', 'Doe', '$2y$10$/tYQWIg5JRyJswDPZi5SB.GzC.ld3e3HFwFCNtM0urEPWElIjV2Qy', 'facebook', '2024-02-13 22:23:26', '2024-02-13 22:23:26', NULL, 'personal', 'active', NULL);
+(46, 'elshora@sgmail.com1s2', '111', 'Doe', '$2y$10$/tYQWIg5JRyJswDPZi5SB.GzC.ld3e3HFwFCNtM0urEPWElIjV2Qy', 'facebook', '2024-02-13 22:23:26', '2024-02-13 22:23:26', NULL, 'personal', 'active', NULL),
+(47, 'gggg@ggg.jjj', 'Jjhh', '', '$2y$10$Y73JqbMmlN/5kASojkM15.lyr5r93mHScUM.VqL73u8FtZYZIdVu.', 'email_password', '2024-02-13 23:08:57', '2024-02-13 23:08:57', NULL, 'personal', 'pending', 'want to verify the account');
 
 -- --------------------------------------------------------
 
@@ -157,7 +159,8 @@ CREATE TABLE `group_activity` (
   `activity_id` int(11) NOT NULL,
   `activity_group_id` int(11) NOT NULL,
   `activity_direction_id` int(11) DEFAULT NULL,
-  `activity_type` enum('photo','record_file','text_message','voice_message','poll','document','instructions','video','other') NOT NULL,
+  `activity_type` enum('photo','record_file','text_message','voice_message','poll','document','instructions','video','location','other') NOT NULL,
+  `activity_reply_on` int(11) DEFAULT NULL COMMENT 'if this activity is replied on other activity',
   `activity_content` varchar(2000) DEFAULT NULL,
   `activity_attachments` varchar(255) DEFAULT NULL COMMENT 'if user send file with content',
   `activity_date` datetime NOT NULL DEFAULT current_timestamp(),
@@ -166,6 +169,13 @@ CREATE TABLE `group_activity` (
   `activity_owner_id` int(11) NOT NULL,
   `activity_last_modified` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+--
+-- Dumping data for table `group_activity`
+--
+
+INSERT INTO `group_activity` (`activity_id`, `activity_group_id`, `activity_direction_id`, `activity_type`, `activity_reply_on`, `activity_content`, `activity_attachments`, `activity_date`, `activity_post_status`, `activity_notify_others`, `activity_owner_id`, `activity_last_modified`) VALUES
+(2, 1, NULL, 'text_message', NULL, 'text message', NULL, '2024-02-19 11:25:18', 'admin_agree', 'custom_notify', 46, NULL);
 
 -- --------------------------------------------------------
 
@@ -216,6 +226,13 @@ CREATE TABLE `group_deails` (
   `group_status_message` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
+--
+-- Dumping data for table `group_deails`
+--
+
+INSERT INTO `group_deails` (`group_id`, `group_name`, `group_owner_id`, `group_creation_date`, `group_description`, `group_visibility`, `group_access_type`, `group_category`, `group_image`, `group_type`, `group_discussion_type`, `group_status`, `group_status_message`) VALUES
+(1, 'aaaaa', 42, '2024-02-19 11:22:12', NULL, 'public', 'read_write_with_admin_permission', 'personal', NULL, 'private', 'not_exist', 'active', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -230,6 +247,13 @@ CREATE TABLE `group_members` (
   `member_join_date` datetime NOT NULL DEFAULT current_timestamp(),
   `member_role` enum('user','admin') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+
+--
+-- Dumping data for table `group_members`
+--
+
+INSERT INTO `group_members` (`group_id`, `member_id`, `member_can_interaction`, `member_notification`, `member_join_date`, `member_role`) VALUES
+(1, 46, 1, 'custom_notify', '2024-02-19 11:23:39', 'admin');
 
 -- --------------------------------------------------------
 
@@ -391,7 +415,9 @@ CREATE TABLE `verification_codes` (
 --
 
 INSERT INTO `verification_codes` (`verification_id`, `verification_user`, `verification_code`, `verification_type`, `verification_created_at`) VALUES
-(12, 45, '824340', 'create_email', '2024-02-13 22:21:19');
+(15, 44, '777878', 'forgot_password', '2024-02-13 03:32:20'),
+(18, 46, '777878', 'forgot_password', '2024-02-14 18:38:30'),
+(20, 42, '777878', 'create_email', '2024-02-13 04:18:59');
 
 --
 -- Indexes for dumped tables
@@ -443,7 +469,8 @@ ALTER TABLE `group_activity`
   ADD PRIMARY KEY (`activity_id`),
   ADD KEY `group_activity_ibfk_3` (`activity_owner_id`,`activity_group_id`),
   ADD KEY `group_activity_ibfk_4` (`activity_group_id`,`activity_owner_id`),
-  ADD KEY `activity_direction_id` (`activity_direction_id`);
+  ADD KEY `activity_direction_id` (`activity_direction_id`),
+  ADD KEY `activity_reply_on` (`activity_reply_on`);
 
 --
 -- Indexes for table `group_activity_direction`
@@ -546,13 +573,13 @@ ALTER TABLE `app_features`
 -- AUTO_INCREMENT for table `app_users`
 --
 ALTER TABLE `app_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `group_activity`
 --
 ALTER TABLE `group_activity`
-  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `activity_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `group_activity_direction`
@@ -564,7 +591,7 @@ ALTER TABLE `group_activity_direction`
 -- AUTO_INCREMENT for table `group_deails`
 --
 ALTER TABLE `group_deails`
-  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `help_and_support`
@@ -600,7 +627,7 @@ ALTER TABLE `user_action_history`
 -- AUTO_INCREMENT for table `verification_codes`
 --
 ALTER TABLE `verification_codes`
-  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
@@ -626,7 +653,8 @@ ALTER TABLE `group_activity`
   ADD CONSTRAINT `group_activity_ibfk_1` FOREIGN KEY (`activity_group_id`) REFERENCES `group_deails` (`group_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `group_activity_ibfk_3` FOREIGN KEY (`activity_owner_id`) REFERENCES `group_members` (`member_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `group_activity_ibfk_4` FOREIGN KEY (`activity_group_id`,`activity_owner_id`) REFERENCES `group_members` (`group_id`, `member_id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `group_activity_ibfk_5` FOREIGN KEY (`activity_direction_id`) REFERENCES `group_activity_direction` (`direction_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `group_activity_ibfk_5` FOREIGN KEY (`activity_direction_id`) REFERENCES `group_activity_direction` (`direction_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `group_activity_ibfk_6` FOREIGN KEY (`activity_reply_on`) REFERENCES `group_activity` (`activity_id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `group_activity_direction`
