@@ -8,10 +8,10 @@
 	},
 	"item": [
 		{
-			"name": "Authentication",
+			"name": "admins",
 			"item": [
 				{
-					"name": "admins",
+					"name": "Authentication",
 					"item": [
 						{
 							"name": "login_admin",
@@ -141,9 +141,14 @@
 							"response": []
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
 				{
-					"name": "users",
+					"name": "Authentication",
 					"item": [
 						{
 							"name": "login_user",
