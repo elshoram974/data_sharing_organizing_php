@@ -1,5 +1,5 @@
 <?php
-include "../../../../data_sharing_app/connect.php";
+include "../../connect.php";
 
 $user_id = postRequest("user_id");
 

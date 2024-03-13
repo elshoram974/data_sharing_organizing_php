@@ -41,7 +41,3 @@ $changestateStmt->execute(array('deleted', $user_id));
 $response = successState('response', ['massege' => 'User has been deleted successfully']);
 
 echo json_encode($response);
-
-$action_type = "account_crud";
-$action_details = "user is changed name";
-action($user_id, $action_type, $action_details, $con);

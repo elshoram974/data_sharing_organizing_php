@@ -1,6 +1,6 @@
 <?php
 
-include "../../../../data_sharing_app/connect.php";
+include "../../connect.php";
 
 $usersStmt = $con->prepare('SELECT * FROM app_users');
 $usersStmt->execute();
