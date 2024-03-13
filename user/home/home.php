@@ -5,12 +5,12 @@ $user_password = postRequest("user_password");
 
 $action_type = "page_view";
 $action_details = "user is view home page";
-action($user_id, $action_type, $action_details ,$con);
+action($user_id, $action_type, $action_details, $con);
 
 $checkStmt = $con->prepare("SELECT user_password FROM app_users WHERE user_id = ?");
 $checkStmt->execute(array($user_id));
 $userpassword = $checkStmt->fetchAll(PDO::FETCH_ASSOC);
-if( password_verify( $user_password, $userpassword[0]['user_password'] )) {
+if (!password_verify($user_password, $userpassword[0]['user_password'])) {
     $response = errorState(401, 'authentication_error', 'password is changed');
     echo json_encode($response);
     exit;
@@ -41,7 +41,7 @@ $groupsStmt->execute(array($user_id));
 $usersgroup = $groupsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($usersgroup as $value) {
-    
+
     $group_id = $value['group_id'];
     $activityStmt = $con->prepare("SELECT * FROM group_activity WHERE activity_group_id = ? ORDER BY activity_id DESC LIMIT 1");
     $activityStmt->execute(array($group_id));
@@ -56,6 +56,3 @@ foreach ($usersgroup as $value) {
 
     echo json_encode($responseact);
 }
-
-
-
