@@ -34,7 +34,7 @@ WHERE `group_members`.`member_id` = ?");
 $stmt->execute(array($user_id));
 $groupinfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $response = successState('groups', $groupinfo);
-echo json_encode($response);
+echo json_encode($response, JSON_PRETTY_PRINT);
 
 $groupsStmt = $con->prepare("SELECT group_id FROM group_members WHERE member_id = ?");
 $groupsStmt->execute(array($user_id));
@@ -54,5 +54,5 @@ foreach ($usersgroup as $value) {
     $responseact = successState('activity', $activities);
     $responseact['other_user'] = $owner;
 
-    echo json_encode($responseact);
+    echo json_encode($responseact, JSON_PRETTY_PRINT);
 }
