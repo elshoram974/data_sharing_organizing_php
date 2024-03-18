@@ -13,14 +13,14 @@ if (empty($user_new_first_name) || empty($user_new_last_name)) {
 }
 
 $updateStmt = $con->prepare("UPDATE app_users SET user_first_name = ? , user_last_name = ? WHERE user_id = ?");
-$updateStmt->execute(array($user_new_first_name,$user_new_last_name,$user_id));
+$updateStmt->execute(array($user_new_first_name, $user_new_last_name, $user_id));
 
 $Stmt = $con->prepare("SELECT `app_users`.* FROM app_users WHERE user_id = ?");
 $Stmt->execute(array($user_id));
-$data = $Stmt->fetchAll(PDO::FETCH_ASSOC);
+$data = $Stmt->fetch(PDO::FETCH_ASSOC);
 $response = successState("user", $data);
 echo json_encode($response);
 
 $action_type = "account_crud";
 $action_details = "user is changed name";
-action($user_id, $action_type, $action_details ,$con);
+action($user_id, $action_type, $action_details, $con);
