@@ -35,7 +35,7 @@ $updateStmt->execute(array($hashedPass, $user_id));
 
 $Stmt = $con->prepare("SELECT `app_users`.* FROM app_users WHERE user_id = ?");
 $Stmt->execute(array($user_id));
-$data = $Stmt->fetchAll(PDO::FETCH_ASSOC);
+$data = $Stmt->fetch(PDO::FETCH_ASSOC);
 $response = successState("user", $data);
 echo json_encode($response);
 
