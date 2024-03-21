@@ -23,7 +23,7 @@ if (count($old_image) > 0 && $old_image['user_image'] != '') {
         action($user_id, $action_type, $action_details, $con);
 
 } else {
-    $response = errorState(401, 'auth-error', 'this user is not put image');
+    $response = errorState(404, 'not-found', 'this user is not put image');
 }
 
 echo json_encode($response, JSON_PRETTY_PRINT);
