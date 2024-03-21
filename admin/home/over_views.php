@@ -1,0 +1,27 @@
+<?php
+include "../../connect.php";
+
+$stmt=$con->prepare
+("SELECT count(action_id) AS `number_of_users` FROM user_action_history 
+WHERE action_type='page_view' AND action_time >= DATE_SUB(NOW(), INTERVAL 1 MONTH) ;");
+$stmt->execute();
+$count=$stmt->fetch(PDO::FETCH_ASSOC);
+$response = successState("visits_last_month", $count);
+
+
+$stmt=$con->prepare
+("SELECT count(action_id) AS `number_of_users` FROM user_action_history 
+WHERE action_type='page_view' AND action_time >= DATE_SUB(NOW(), INTERVAL 1 WEEK) ;");
+$stmt->execute();
+$count=$stmt->fetch(PDO::FETCH_ASSOC);
+$response["visits_last_week"] = $count;
+
+
+$stmt=$con->prepare
+("SELECT count(action_id) AS `number_of_users` FROM user_action_history 
+WHERE action_type='page_view' AND action_time >= DATE_SUB(NOW(), INTERVAL 24 HOUR) ;");
+$stmt->execute();
+$count=$stmt->fetch(PDO::FETCH_ASSOC);
+$response["visits_last_day"] = $count;
+
+echo json_encode($response, JSON_PRETTY_PRINT);

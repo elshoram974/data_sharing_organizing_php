@@ -1,0 +1,54 @@
+[21-Mar-2024 06:30:36 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php on line 7
+[21-Mar-2024 06:32:16 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php on line 7
+[21-Mar-2024 07:27:31 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php on line 7
+[21-Mar-2024 07:27:42 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php on line 7
+[21-Mar-2024 07:32:30 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php on line 7
+[21-Mar-2024 07:32:32 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php on line 7
+[21-Mar-2024 07:32:33 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php on line 7
+[21-Mar-2024 07:34:49 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php on line 7
+[21-Mar-2024 07:39:28 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php on line 7
+[21-Mar-2024 07:39:32 Africa/Cairo] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'log_id' in 'field list' in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php:7
+Stack trace:
+#0 /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php(7): PDOStatement->execute()
+#1 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_7days.php on line 7
+[21-Mar-2024 07:46:27 Africa/Cairo] PHP Fatal error:  Uncaught Error: Call to undefined method PDOStatement::fetchcolmne() in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/db6x5ln05xd9/public_html/thiet.mrecode.com/api/admin/home/num_of_user_last_24hour.php on line 8
