@@ -35,24 +35,10 @@ $stmt->execute(array($user_id));
 $groupinfo = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $response = successState('groups', $groupinfo);
 
-$groupsStmt = $con->prepare("SELECT group_id FROM group_members WHERE member_id = ?");
-$groupsStmt->execute(array($user_id));
-$usersgroup = $groupsStmt->fetchAll(PDO::FETCH_ASSOC);
 
-$i=1;
-foreach ($usersgroup as $value) {
+$selectStmt = $con->prepare("SELECT app_users.* FROM app_users WHERE user_id = ?");
+$selectStmt->execute(array($user_id));
+$data = $selectStmt->fetch(PDO::FETCH_ASSOC);
+$response['user'] = $data;
 
-    $group_id = $value['group_id'];
-    $activityStmt = $con->prepare("SELECT * FROM group_activity WHERE activity_group_id = ? ORDER BY activity_id DESC LIMIT 1");
-    $activityStmt->execute(array($group_id));
-    $activities = $activityStmt->fetch(PDO::FETCH_ASSOC);
-
-    $userStmt =  $con->prepare("SELECT * FROM `app_users` WHERE `user_id`= ? ");
-    $userStmt->execute(array($activities["activity_owner_id"]));
-    $owner = $userStmt->fetch(PDO::FETCH_ASSOC);
-
-    $response["activity $i"] =$activities;
-    $response["owner $i"]=$owner;
-    $i++;
-}
 echo json_encode($response, JSON_PRETTY_PRINT);
