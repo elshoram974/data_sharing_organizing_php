@@ -9,7 +9,7 @@ $Stmt = $con->prepare("SELECT app_users.user_image FROM app_users WHERE user_id 
 $Stmt->execute(array($user_id));
 $old_image = $Stmt->fetch(PDO::FETCH_ASSOC);
 if (count($old_image) > 0 && $old_image['user_image'] != '') {
-        delete_file($dir , $old_image['user_image']);
+        delete_file($dir , end(explode('/', $old_image['user_image'])));
         $updateStmt = $con->prepare("UPDATE app_users SET user_image = NULL WHERE user_id = ?");
         $updateStmt->execute(array($user_id));
         
