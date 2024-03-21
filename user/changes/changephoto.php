@@ -5,11 +5,12 @@ $dir = "../../assets/users_photo/";
 
 $user_id = postRequest("user_id");
 $image = file_upload("file");
+$Link = 'https://thiet.mrecode.com/api/assets/users_photo/'.$image; 
 
 if ($image == 'ext') {
-    $response = errorState(401, 'auth-error', 'This file is not support');
+    $response = errorState(415, 'unsupported-media-type', 'This file is not support');
 } elseif ($image == 'size') {
-    $response = errorState(401, 'auth-error', 'This file is larg in size');
+    $response = errorState(413, 'payload-too-large', 'This file is larg in size');
 } else {
     $Stmt = $con->prepare("SELECT app_users.user_image FROM app_users WHERE user_id = ?");
     $Stmt->execute(array($user_id));
@@ -17,10 +18,10 @@ if ($image == 'ext') {
     if (count($old_image) > 0 && $old_image['user_image'] != '') {
         delete_file($dir , $old_image['user_image']);
         $updateStmt = $con->prepare("UPDATE app_users SET user_image = ? WHERE user_id = ?");
-        $updateStmt->execute(array($image, $user_id));
+        $updateStmt->execute(array($Link, $user_id));
     }else{
         $updateStmt = $con->prepare("UPDATE app_users SET user_image = ? WHERE user_id = ?");
-        $updateStmt->execute(array($image, $user_id));
+        $updateStmt->execute(array($Link, $user_id));
     }
 
     $selectStmt = $con->prepare("SELECT app_users.* FROM app_users WHERE user_id = ?");
