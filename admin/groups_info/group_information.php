@@ -13,7 +13,13 @@ if ($find == 0) {
     exit;
 }
 
-$group = $groupStmt->fetchAll(PDO::FETCH_ASSOC);
-
+$group = $groupStmt->fetch(PDO::FETCH_ASSOC);
 $response = successState("group", $group);
+
+$stmt=$con->prepare("SELECT count(member_id) AS `number_of_users_in_group` FROM group_members
+WHERE group_id = ?");
+$stmt->execute(array($group_id));
+$count=$stmt->fetch(PDO::FETCH_ASSOC);
+$response["total_users"] = $count;
+
 echo json_encode($response, JSON_PRETTY_PRINT);
