@@ -43,5 +43,5 @@ $response = successState('response', ['massege' => 'User has been deleted succes
 echo json_encode($response);
 
 $action_type = "account_crud";
-$action_details = "user is changed name";
+$action_details = "user is deleted";
 action($user_id, $action_type, $action_details, $con);
