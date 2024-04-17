@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 16, 2024 at 12:23 PM
--- Server version: 10.6.16-MariaDB-cll-lve
+-- Generation Time: Apr 16, 2024 at 11:58 PM
+-- Server version: 10.6.17-MariaDB-cll-lve
 -- PHP Version: 8.1.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -256,19 +256,19 @@ CREATE TABLE `group_members` (
   `group_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `member_can_interaction` tinyint(1) NOT NULL DEFAULT 1,
-  `member_notification` enum('notify','without_notify','custom_notify') NOT NULL,
+  `member_notification` enum('notify','without_notify','custom_notify') NOT NULL DEFAULT 'notify',
   `member_join_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `member_role` enum('user','admin') NOT NULL DEFAULT 'user'
+  `member_is_admin` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 
 --
 -- Dumping data for table `group_members`
 --
 
-INSERT INTO `group_members` (`group_id`, `member_id`, `member_can_interaction`, `member_notification`, `member_join_date`, `member_role`) VALUES
-(5, 42, 1, 'notify', '2024-03-25 08:40:56', 'admin'),
-(5, 45, 0, 'notify', '2024-04-15 04:17:34', 'user'),
-(5, 58, 0, 'notify', '2024-04-15 07:20:37', 'user');
+INSERT INTO `group_members` (`group_id`, `member_id`, `member_can_interaction`, `member_notification`, `member_join_date`, `member_is_admin`) VALUES
+(5, 42, 1, 'notify', '2024-03-25 08:40:56', 2),
+(5, 45, 0, 'notify', '2024-04-15 04:17:34', 1),
+(5, 58, 0, 'notify', '2024-04-15 07:20:37', 1);
 
 -- --------------------------------------------------------
 
@@ -775,7 +775,25 @@ INSERT INTO `user_action_history` (`action_id`, `user_id`, `device_id`, `action_
 (993, 45, NULL, '2024-04-16 03:57:07', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
 (994, 45, NULL, '2024-04-16 06:22:38', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
 (995, 45, NULL, '2024-04-16 10:57:02', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
-(996, 45, NULL, '2024-04-16 11:09:31', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL);
+(996, 45, NULL, '2024-04-16 11:09:31', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(997, 42, NULL, '2024-04-16 13:41:45', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(998, 42, NULL, '2024-04-16 13:43:36', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(999, 42, NULL, '2024-04-16 13:46:20', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1000, 42, NULL, '2024-04-16 13:50:44', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1001, 42, NULL, '2024-04-16 14:00:55', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1002, 42, NULL, '2024-04-16 14:12:53', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1003, 42, NULL, '2024-04-16 14:14:18', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1004, 42, NULL, '2024-04-16 14:16:59', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1005, 42, NULL, '2024-04-16 14:18:30', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1006, 42, NULL, '2024-04-16 14:19:09', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1007, 42, NULL, '2024-04-16 14:20:03', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1008, 42, NULL, '2024-04-16 14:20:43', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1009, 42, NULL, '2024-04-16 14:23:49', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1010, 42, NULL, '2024-04-16 14:28:56', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1011, 42, NULL, '2024-04-16 14:37:06', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1012, 42, NULL, '2024-04-16 15:17:11', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1013, 45, NULL, '2024-04-16 16:17:57', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL),
+(1014, 42, NULL, '2024-04-16 23:41:03', 'page_view', 'user is view home page', NULL, NULL, NULL, 0, NULL, 'android', NULL);
 
 -- --------------------------------------------------------
 
@@ -1027,7 +1045,7 @@ ALTER TABLE `payment_purchase_data`
 -- AUTO_INCREMENT for table `user_action_history`
 --
 ALTER TABLE `user_action_history`
-  MODIFY `action_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=997;
+  MODIFY `action_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1015;
 
 --
 -- AUTO_INCREMENT for table `user_devices`
