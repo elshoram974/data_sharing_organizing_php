@@ -28,7 +28,7 @@ if ($userstatus[0]['member_is_admin'] == 1){
     exit();
 }
 
-if(is_int($direction_id)){
+if(isset($direction_id)){
     $updatestmt = $con->prepare('UPDATE `group_members` SET `member_can_interaction`= ? WHERE `member_id`= ? AND `group_id`= ?');
     $updatestmt->execute(array(0,$user_id,$group_id));
     $count =  $updatestmt->rowCount();
@@ -52,7 +52,7 @@ if(is_int($direction_id)){
 }
 
 
-if(is_int($activity_id)){
+if(isset($activity_id)){
     $updatestmt = $con->prepare('UPDATE `group_members` SET `member_can_interaction`= ? WHERE `member_id`= ? AND `group_id`= ?');
     $updatestmt->execute(array(0,$user_id,$group_id));
     $count =  $updatestmt->rowCount();
@@ -73,7 +73,7 @@ if(is_int($activity_id)){
     if($count>0){
         $response = successState('response', ['massege' => 'user was blocked']);
      
-        if(isset($activity)){
+        if(isset($activity['activity_attachments_url'])){
             delete_file($dir , end(explode('/', $activity['activity_attachments_url'])));
         }
     }else{
