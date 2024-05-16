@@ -1,6 +1,6 @@
 <?php
 
-function sendGCM(string $title, string $message, string $topic, array $data)
+function sendGCM(string $title, string $message, string $topic, ?string $data)
 {
 
 
@@ -18,7 +18,11 @@ function sendGCM(string $title, string $message, string $topic, array $data)
             "sound" => "default"
 
         ),
-        'data' => $data
+        'data' => array(
+            "data" => $data
+        )
+
+
 
     );
 
@@ -37,6 +41,6 @@ function sendGCM(string $title, string $message, string $topic, array $data)
     curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
 
     $result = curl_exec($ch);
-    return $result;
     curl_close($ch);
+    return $result;
 }

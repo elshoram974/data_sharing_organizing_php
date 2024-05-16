@@ -1,10 +1,10 @@
 <?php
+include "../../core/functions/post_request.php";
 include "fcm.php";
-
 $title = postRequest('title');
 $message = postRequest('message');
 $topic = postRequest('topic');
-$data = postRequest('data');
+$data = postRequest('data', true);
 
-$dataEncoded = json_decode($data);
-sendGCM($title, $message, $topic, $dataEncoded);
+$result = sendGCM($title, $message, $topic, $data);
+echo json_encode(array("result" => $result));
