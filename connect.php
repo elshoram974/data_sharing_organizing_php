@@ -21,6 +21,6 @@ try {
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     include("core/functions/import.php");
 } catch (\Throwable $th) {
-    http_response_code(500);
-    echo json_encode(array('status' => 'Failure', "code" => 500, "type" => 'server-error', "message" => $th->getMessage()));
+    http_response_code($th->getCode());
+    echo json_encode(array('status' => 'Failure', "code" => $th->getCode(), "type" => 'server-error', "message" => $th->getMessage()));
 }

@@ -4,12 +4,12 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../../libraries/phpmailer/Exception.php';
-require '../../libraries/phpmailer/PHPMailer.php';
-require '../../libraries/phpmailer/SMTP.php';
 
 function sendMail(string $toEmail, string $toName = '', string $subject, string $body): void
 {
+    require "../../libraries/phpmailer/Exception.php";
+    require "../../libraries/phpmailer/PHPMailer.php";
+    require "../../libraries/phpmailer/SMTP.php";
     $mail = new PHPMailer(true);
     try {
         //Server settings
