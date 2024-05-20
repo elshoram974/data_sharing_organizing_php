@@ -1,11 +1,21 @@
 <?php
 
 include "../../../connect.php";
+$admin_id = postRequest("admin_id");
 $user_id = postRequest("user_id");
 $group_id = postRequest("group_id");
 $direction_id = postRequest("direction_id" , true);
 $activity_id = postRequest("activity_id" , true);
 $dir =  "../../../assets/users_photo";
+
+$adminstmt = $con->prepare("SELECT member_is_admin FROM group_members WHERE member_id = ? AND  group_id = ?");
+$adminstmt->execute(array($admin_id , $group_id));
+$adminstatus = $adminstmt->fetchAll(PDO::FETCH_ASSOC);
+if ($adminstatus[0]['member_is_admin'] == 0) {
+    $response = errorState(403, 'access_denied', 'User does not have permission to perform this action.');
+    echo json_encode($response);
+    exit;
+}
 
 if (empty($direction_id) && empty($activity_id)) {
     $response = errorState(400, 'missing_data', 'Both direction_id and activity_id cannot be empty in same time.');
