@@ -33,4 +33,5 @@ if($count==0){
     exit;
 }else{
     $response = successState('response', ['massege' => 'user status was changed']);
+    echo json_encode($response);
 }
