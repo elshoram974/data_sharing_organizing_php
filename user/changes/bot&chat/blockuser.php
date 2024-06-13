@@ -6,7 +6,7 @@ $user_id = postRequest("user_id");
 $group_id = postRequest("group_id");
 $direction_id = postRequest("direction_id" , true);
 $activity_id = postRequest("activity_id" , true);
-$dir =  "../../../assets/users_photo";
+$dir =  "../../../assets/groups_files";
 
 $adminstmt = $con->prepare("SELECT member_is_admin FROM group_members WHERE member_id = ? AND  group_id = ?");
 $adminstmt->execute(array($admin_id , $group_id));
