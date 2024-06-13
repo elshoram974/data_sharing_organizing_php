@@ -4,7 +4,7 @@ include "../../../connect.php";
 $user_id = postRequest("user_id");
 $group_id = postRequest("group_id");
 $activity_id = postRequest("activity_id");
-$dir =  "../../../assets/users_photo";
+$dir =  "../../../assets/groups_files";
 
 $state1Stmt = $con->prepare("SELECT member_is_admin FROM group_members WHERE member_id = ? AND  group_id = ?");
 $state1Stmt->execute(array($user_id , $group_id));
