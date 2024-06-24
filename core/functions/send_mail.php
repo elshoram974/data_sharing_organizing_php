@@ -18,7 +18,7 @@ function sendMail(string $toEmail, string $toName = '', string $subject, string 
         $mail->Host       = 'mail.mrecode.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'sharikna@mrecode.com';
-        $mail->Password   = 'zGQ&]emImnQ=';
+        $mail->Password   = 'thiet2024#@';
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 
