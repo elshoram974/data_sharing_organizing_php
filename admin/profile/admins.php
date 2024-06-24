@@ -1,8 +1,8 @@
 <?php
 include "../../connect.php";
 
-$adminsStmt =  $con->prepare('SELECT * FROM admins WHERE a_id=?');
-$adminsStmt->execute(array($user_id));
+$adminsStmt =  $con->prepare('SELECT * FROM admins');
+$adminsStmt->execute();
 $admins = $adminsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 $response = successState("admins", $admins);
