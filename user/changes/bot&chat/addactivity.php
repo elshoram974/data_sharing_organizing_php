@@ -45,9 +45,9 @@ $userstatus = $state1Stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($userstatus[0]['member_is_admin'] == 1){
         $addstmt = $con->prepare("INSERT INTO `group_activity`
         (`activity_group_id`,
-         `activity_direction_id `,
+         `activity_direction_id`,
          `activity_type`,
-         `activity_reply_on `,
+         `activity_reply_on`,
          `activity_content`, 
          `activity_attachments_url`,
          `activity_attachments_size`,
@@ -73,9 +73,9 @@ if ($userstatus[0]['member_is_admin'] == 1){
         if($interaction['member_can_interaction'] == 1){
             $addstmt = $con->prepare("INSERT INTO `group_activity`
             (`activity_group_id`,
-            `activity_direction_id `,
+            `activity_direction_id`,
             `activity_type`,
-            `activity_reply_on `,
+            `activity_reply_on`,
             `activity_content`, 
             `activity_attachments_url`,
             `activity_attachments_size`,
@@ -98,9 +98,9 @@ if ($userstatus[0]['member_is_admin'] == 1){
         if($interaction['member_can_interaction'] == 1){
             $addstmt = $con->prepare("INSERT INTO `group_activity`
             (`activity_group_id`,
-            `activity_direction_id `,
+            `activity_direction_id`,
             `activity_type`,
-            `activity_reply_on `,
+            `activity_reply_on`,
             `activity_content`, 
             `activity_attachments_url`,
             `activity_attachments_size`,

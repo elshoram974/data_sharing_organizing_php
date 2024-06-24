@@ -7,6 +7,11 @@ $action_type = "page_view";
 $action_details = "user is view home page";
 action($user_id, $action_type, $action_details, $con);
 
+$dateTimeCairo = new DateTime("now", new DateTimeZone("Africa/Cairo"));
+$currentDateTimeCairo = $dateTimeCairo->format('Y-m-d H:i:s');
+$timeupdate = $con->prepare("UPDATE `app_users` SET `user_lastlogin`= ? WHERE `user_id`= ?");
+$timeupdate->execute(array($currentDateTimeCairo, $user_id));
+
 $check1Stmt = $con->prepare("SELECT user_provider FROM app_users WHERE user_id = ?");
 $check1Stmt->execute(array($user_id));
 $userprov = $check1Stmt->fetchAll(PDO::FETCH_ASSOC);
