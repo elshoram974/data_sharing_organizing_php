@@ -4,8 +4,8 @@ include "../../connect.php";
 
 $user_id = postRequest("user_id");
 
-$selectgroupsStmt = $con->prepare('SELECT group_id FROM group_members WHERE member_id = ? AND member_role = ?');
-$selectgroupsStmt->execute(array($user_id,"admin"));
+$selectgroupsStmt = $con->prepare('SELECT group_id FROM group_members WHERE member_id = ? AND member_is_admin = ?');
+$selectgroupsStmt->execute(array($user_id,"1"));
 $groups = $selectgroupsStmt->fetchAll(PDO::FETCH_COLUMN);
 $selectgroupsStmt->closeCursor();
 
@@ -19,9 +19,9 @@ foreach ($groups as $group_id) {
     $admin =  $dminStmt->fetchColumn();
 
     $changeadminStmt = $con->prepare('UPDATE group_members
-    SET member_role = ?
+    SET member_is_admin = ?
     WHERE group_id = ? AND member_id = ? ;');
-    $changeadminStmt->execute(["admin",$group_id, $admin]);
+    $changeadminStmt->execute(["1",$group_id, $admin]);
     $changeadminStmt->closeCursor();
 }
 
