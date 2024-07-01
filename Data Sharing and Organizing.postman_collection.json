@@ -3,8 +3,8 @@
 		"_postman_id": "484998ac-28b7-4998-acd6-67a7832fadd3",
 		"name": "Data Sharing and Organizing",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "29286079",
-		"_collection_link": "https://orange-spaceship-516623.postman.co/workspace/Data-sharing-and-organizing-wor~f4b0d81f-9596-4b20-8525-fb62a27dd9bb/collection/29286079-484998ac-28b7-4998-acd6-67a7832fadd3?action=share&source=collection_link&creator=29286079"
+		"_exporter_id": "33711999",
+		"_collection_link": "https://orange-spaceship-516623.postman.co/workspace/Data-sharing-and-organizing-wor~f4b0d81f-9596-4b20-8525-fb62a27dd9bb/collection/29286079-484998ac-28b7-4998-acd6-67a7832fadd3?action=share&source=collection_link&creator=33711999"
 	},
 	"item": [
 		{
@@ -141,6 +141,564 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "users_info",
+					"item": [
+						{
+							"name": "allusers",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{adminUserInfo}}/allusers.php",
+									"host": [
+										"{{adminUserInfo}}"
+									],
+									"path": [
+										"allusers.php"
+									]
+								},
+								"description": "# allusers Api Documentation\n\n## show informations of all users in app and nomber of thim\n\n- **Endpoint:** `/allusers.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\nnone\n\n### Request Example\n\nnone\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"users\": [\n        {\n            \"user_id\": 42,\n            \"user_email\": \"elshoram974@gmail.com\",\n            \"user_first_name\": \"Mohammed\",\n            \"user_last_name\": \"El Shora\",\n            \"user_password\": \"$2y$10$iMZkcd.KYLeUNN9INKlLTOFFlUJS7PTpVcRz1bea9Em8FxByANZ.q\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-03-14 16:06:14\",\n            \"user_createdat\": \"2024-02-01 01:53:48\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        },\n        {\n            \"user_id\": 45,\n            \"user_email\": \"mre9743@gmail.com\",\n            \"user_first_name\": \"ali\",\n            \"user_last_name\": \"alhamoli\",\n            \"user_password\": \"$2y$10$ExlqpJ7wW1NdMncnYu2sQOSZa4V4rgBcqB6TJNzD6ZWOroQYCDJ9i\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-02-27 20:56:37\",\n            \"user_createdat\": \"2024-02-13 22:21:19\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        },\n        {\n            \"user_id\": 48,\n            \"user_email\": \"r7HJAAuguifcFd5ycuWaGq2HfOF3\",\n            \"user_first_name\": \"Mohammed\",\n            \"user_last_name\": \"Elshora\",\n            \"user_password\": \"$2y$10$FaVuTk1lHxx.Bm8DF3oCjupoSAyYFOAj359BNkELETKAUBBPZ/rsq\",\n            \"user_provider\": \"facebook\",\n            \"user_lastlogin\": \"2024-03-11 12:07:37\",\n            \"user_createdat\": \"2024-02-20 21:13:58\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        },\n        {\n            \"user_id\": 49,\n            \"user_email\": \"eidm56511@gmail.com\",\n            \"user_first_name\": \"MAHMOUD\",\n            \"user_last_name\": \"Ahmed\",\n            \"user_password\": \"$2y$10$WHiW2iJhdITTDaCz61SBWuVXEQ7Q90jlYpZnZqZRZx6wHABZR0lZ2\",\n            \"user_provider\": \"google\",\n            \"user_lastlogin\": \"2024-02-28 16:17:18\",\n            \"user_createdat\": \"2024-02-27 21:54:20\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        },\n        {\n            \"user_id\": 50,\n            \"user_email\": \"alialiali@gmail.com\",\n            \"user_first_name\": \"ccccccc\",\n            \"user_last_name\": \"\",\n            \"user_password\": \"$2y$10$yN.tGcyw5qzSFClPXN9bYO9qM/CZfLf12qgokaQiuoGSs2.YDNORW\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-03-14 16:29:12\",\n            \"user_createdat\": \"2024-03-14 16:29:12\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"deleted\",\n            \"user_status_message\": \"want to verify the account\"\n        }\n    ],\n    \"total\": 5\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 404)**  \n    if don't there are users in app.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 404,\n  \"type\":\"no_users_found\",\n  \"message\": \"No_users_found\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "userinfo",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "42",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminUserInfo}}/userinformation.php",
+									"host": [
+										"{{adminUserInfo}}"
+									],
+									"path": [
+										"userinformation.php"
+									]
+								},
+								"description": "# userinformation Api Documentation\n\n## show informations of users who intered the id of him\n\n- **Endpoint:** `/userinformation.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"42\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"user\": [\n    {\n      \"user_id\": 50,\n      \"user_email\": \"alialiali@gmail.com\",\n      \"user_first_name\": \"adel\",\n      \"user_last_name\": \"eid\",\n      \"user_password\": \"$2y$10$K6pZNEyoX45C4Y01A5V4uOaG0oOnUnyo1sbXw4YnC0gbWwxTtcLqS\",\n      \"user_provider\": \"email_password\",\n      \"user_lastlogin\": \"2024-06-24 12:01:37\",\n      \"user_createdat\": \"2024-03-14 16:29:12\",\n      \"user_image\": null,\n      \"user_type\": \"personal\",\n      \"user_status\": \"deleted\",\n      \"user_status_message\": \"want to verify the account\"\n    }\n  ],\n  \"groups\": [\n    {\n      \"group_id\": 5,\n      \"group_name\": \"Fourth, THIET\"\n    },\n    {\n      \"group_id\": 8,\n      \"group_name\": \"ali\"\n    }\n  ]\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "groups_admins",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{adminUserInfo}}/groups_admins.php",
+									"host": [
+										"{{adminUserInfo}}"
+									],
+									"path": [
+										"groups_admins.php"
+									]
+								},
+								"description": "# groups_admins Api Documentation\n\n## show informations of admins in groups in app\n\n- **Endpoint:** `/groups_admins.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"admins\": [\n    {\n      \"group_id\": 5,\n      \"member_id\": 42,\n      \"group_name\": \"Fourth, THIET\",\n      \"user_first_name\": \"Mohammed\",\n      \"user_last_name\": \"El Shora\"\n    },\n    {\n      \"group_id\": 5,\n      \"member_id\": 62,\n      \"group_name\": \"Fourth, THIET\",\n      \"user_first_name\": \"Ali\",\n      \"user_last_name\": \"\"\n    },\n    {\n      \"group_id\": 8,\n      \"member_id\": 42,\n      \"group_name\": \"ali\",\n      \"user_first_name\": \"Mohammed\",\n      \"user_last_name\": \"El Shora\"\n    },\n    {\n      \"group_id\": 8,\n      \"member_id\": 50,\n      \"group_name\": \"ali\",\n      \"user_first_name\": \"adel\",\n      \"user_last_name\": \"eid\"\n    },\n    {\n      \"group_id\": 8,\n      \"member_id\": 58,\n      \"group_name\": \"ali\",\n      \"user_first_name\": \"Mohammed\",\n      \"user_last_name\": \"Riyad\"\n    }\n  ]\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "control_users",
+					"item": [
+						{
+							"name": "changename by admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "45",
+											"type": "text"
+										},
+										{
+											"key": "new_first_name",
+											"value": "ali",
+											"type": "text"
+										},
+										{
+											"key": "new_last_name",
+											"value": "alhamoli",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminControlUsers}}/changename.php",
+									"host": [
+										"{{adminControlUsers}}"
+									],
+									"path": [
+										"changename.php"
+									]
+								},
+								"description": "# changename Api Documentation\n\n## change name of user by admin of app\n\nchange the first name and last name of user.\n\n- **Endpoint:** `/changename.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n| `new_first_name` | String | the new first name |\n| `new_last_name` | String | the new last name |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"45\",\n  \"new_first_name\": \"ali\"\n  \"new_last_name\": \"elhamoli\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"user\": [\n        {\n            \"user_id\": 45,\n            \"user_email\": \"mre9743@gmail.com\",\n            \"user_first_name\": \"ali\",\n            \"user_last_name\": \"alhamoli\",\n            \"user_password\": \"$2y$10$ExlqpJ7wW1NdMncnYu2sQOSZa4V4rgBcqB6TJNzD6ZWOroQYCDJ9i\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-02-27 20:56:37\",\n            \"user_createdat\": \"2024-02-13 22:21:19\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        }\n    ]\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "changepassword by admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "42",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminControlUsers}}/changepassword.php",
+									"host": [
+										"{{adminControlUsers}}"
+									],
+									"path": [
+										"changepassword.php"
+									]
+								},
+								"description": "# changepassword Api Documentation\n\n## change password of user by admin of app\n\n- **Endpoint:** `/changepassword.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n| `new_password` | String | the new pass |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"45\",\n  \"new_password\": \"12345678\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"user\": [\n        {\n            \"user_id\": 42,\n            \"user_email\": \"elshoram974@gmail.com\",\n            \"user_first_name\": \"Mohammed\",\n            \"user_last_name\": \"El Shora\",\n            \"user_password\": \"$2y$10$iMZkcd.KYLeUNN9INKlLTOFFlUJS7PTpVcRz1bea9Em8FxByANZ.q\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-03-14 16:00:25\",\n            \"user_createdat\": \"2024-02-01 01:53:48\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        }\n    ]\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    this error happen becouse the new pass must be larger than or eqaul 8 chars.\n    \n    ``` json\n          {\n          \"status\": \"Failure\",\n          \"code\": 401,\n          \"type\":\"authentication_error\",\n          \"message\": \"Password must be at least 8 characters long\"\n          }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteuser by admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "50",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminControlUsers}}/deleteuser.php",
+									"host": [
+										"{{adminControlUsers}}"
+									],
+									"path": [
+										"deleteuser.php"
+									]
+								},
+								"description": "# deleteuser Api Documentation\n\n## delete user from app and change admin of his groups to anather admin by admin of app\n\n- **Endpoint:** `/deleteuser.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"50\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"response\": {\n        \"massege\": \"User has been deleted successfully\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "changename group by admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "g_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "new_name",
+											"value": "elhamoli",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminControlUsers}}/changename_group.php",
+									"host": [
+										"{{adminControlUsers}}"
+									],
+									"path": [
+										"changename_group.php"
+									]
+								},
+								"description": "# changename_group Api Documentation\n\n## change name of groups by admin of app\n\n- **Endpoint:** `/changename_group.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the group. |\n| `new_name` | String | the new name |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"4\",\n  \"new_name\": \"elhamoli\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"group\": {\n        \"group_id\": 4,\n        \"group_name\": \"elhamoli\",\n        \"group_owner_id\": 42,\n        \"group_creation_date\": \"2024-03-21 06:29:19\",\n        \"group_description\": null,\n        \"group_visibility\": \"public\",\n        \"group_access_type\": \"read_write_with_admin_permission\",\n        \"group_category\": \"personal\",\n        \"group_image\": null,\n        \"group_type\": \"public\",\n        \"group_discussion_type\": \"not_exist\",\n        \"group_status\": \"active\",\n        \"group_status_message\": null\n    }\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "deletegroup by admin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "g_id",
+											"value": "4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminControlUsers}}/deletegroup.php",
+									"host": [
+										"{{adminControlUsers}}"
+									],
+									"path": [
+										"deletegroup.php"
+									]
+								},
+								"description": "# deletegroup Api Documentation\n\n## delete group from app and eny data to this group in database by admin of app\n\n- **Endpoint:** `/deletegroup.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"4\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"response\": {\n        \"massege\": \"group has been deleted successfully\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 500)**  \n    it happin if the procces to delete group failed.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"sql_query_failure\",\n  \"message\": \"deleted failed try again\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "groups_info",
+					"item": [
+						{
+							"name": "all_groups",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{groups_info}}/all_groups_information.php",
+									"host": [
+										"{{groups_info}}"
+									],
+									"path": [
+										"all_groups_information.php"
+									]
+								},
+								"description": "# allgroups Api Documentation\n\n## show informations of all groups in app and nomber of thim\n\n- **Endpoint:** `/all_groups_information.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\nnone\n\n### Request Example\n\nnone\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"groups\":  \n{  \n\"group_id\": 3,  \n\"group_name\": \"Aaaa\",  \n\"group_owner_id\": 45,  \n\"group_creation_date\": \"2024-03-18 15:28:07\",  \n\"group_description\": null,  \n\"group_visibility\": \"public\",  \n\"group_access_type\": \"read_write_with_admin_permission\",  \n\"group_category\": \"personal\",  \n\"group_image\": null,  \n\"group_type\": \"public\",  \n\"group_discussion_type\": \"exist\",  \n\"group_status\": \"active\",  \n\"group_status_message\": null  \n},  \n\"total\": 1  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 404)**  \n    if don't there are users in app.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 404,\n  \"type\":\"no_groups_found\",\n  \"message\": \"No_groups_found\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "group_info",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "group_id",
+											"value": "5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{groups_info}}/group_information.php",
+									"host": [
+										"{{groups_info}}"
+									],
+									"path": [
+										"group_information.php"
+									]
+								},
+								"description": "# groupinformation Api Documentation\n\n## show informations of groups whitch the id of it\n\n- **Endpoint:** `/group_information.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `group_id` | int | The Id of the group. |\n\n### Request Example\n\n``` json\n{\n  \"group_id\": \"42\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"group\":\n        {\n            \"group_id\": 3,\n            \"group_name\": \"Aaaa\",\n            \"group_owner_id\": 45,\n            \"group_creation_date\": \"2024-03-18 15:28:07\",\n            \"group_description\": null,\n            \"group_visibility\": \"public\",\n            \"group_access_type\": \"read_write_with_admin_permission\",\n            \"group_category\": \"personal\",\n            \"group_image\": null,\n            \"group_type\": \"public\",\n            \"group_discussion_type\": \"exist\",\n            \"group_status\": \"active\",\n            \"group_status_message\": null\n        }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    if this group is not found\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 401,\n  \"type\":\"no_group_found\",\n  \"massege\":\"this is group not found.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "home",
+					"item": [
+						{
+							"name": "over views",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{dashHome}}/over_views.php",
+									"host": [
+										"{{dashHome}}"
+									],
+									"path": [
+										"over_views.php"
+									]
+								},
+								"description": "# over_views Api Documentation\n\n## show nomber of all users in app and all visits in app in last (day,week,month)\n\n- **Endpoint:** `/over_views.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\nnone\n\n### Request Example\n\nnone\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"total_users_in_app\": {\n        \"number_of_users\": 11\n    },\n    \"total_groups_in_app\": {\n        \"number_of_groups\": 2\n    },\n    \"visits_last_month\": {\n        \"number_of_users\": 410\n    },\n    \"visits_last_week\": {\n        \"number_of_users\": 350\n    },\n    \"visits_last_day\": {\n        \"number_of_users\": 301\n    }\n}\n\n ```\n\n#### if don't there are visits in eny duration this is become 0.\n\n``` json\n{\n    \"status\": \"Success\",\n    \"total_users_in_app\": {\n        \"number_of_users\": 0\n    },\n    \"total_groups_in_app\": {\n        \"number_of_groups\": 0\n    },\n    \"visits_last_month\": {\n        \"number_of_users\": 0\n    },\n    \"visits_last_week\": {\n        \"number_of_users\": 0\n    },\n    \"visits_last_day\": {\n        \"number_of_users\": 0\n    }\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "changename",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "a_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "new_first_name",
+											"value": "ali",
+											"type": "text"
+										},
+										{
+											"key": "new_last_name",
+											"value": "alhamoli",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminProfile}}/changename.php",
+									"host": [
+										"{{adminProfile}}"
+									],
+									"path": [
+										"changename.php"
+									]
+								},
+								"description": "# Change Name Api Documentation\n\n## change name of admin\n\nchange the first name and last name of admin.\n\n- **Endpoint:** `/changename.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `a_id` | int | The Id of the admin. |\n| `new_first_name` | String | the new first name |\n| `new_last_name` | String | the new last name |\n\n### Request Example\n\n``` json\n{\n  \"a_id\": \"4\",\n  \"new_first_name\": \"ali\"\n  \"new_last_name\": \"elhamoli\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin\": {\n        \"a_id\": 4,\n        \"a_email\": \"elshoram974@gmail.com\",\n        \"a_first_name\": \"ali\",\n        \"a_last_name\": \"alhamoli\",\n        \"a_password\": \"12345678\",\n        \"a_verified_code\": \"326485\",\n        \"a_create_at\": \"2024-01-31 15:33:52\",\n        \"a_last_login\": \"2024-03-05 18:08:50\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "changepassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "a_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "current_password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminProfile}}/changepassword.php",
+									"host": [
+										"{{adminProfile}}"
+									],
+									"path": [
+										"changepassword.php"
+									]
+								},
+								"description": "# changepassword Api Documentation\n\n## change password of admin\n\n- **Endpoint:** `/changepassword.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `a_id` | int | The Id of the admin. |\n| `current_password` | String | the current pass |\n| `new_password` | String | the new pass |\n\n### Request Example\n\n``` json\n{\n  \"a_id\": \"4\",\n  \"current_password\": \"12345678\"\n  \"new_password\": \"123456789\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin\": {\n        \"a_id\": 4,\n        \"a_email\": \"elshoram974@gmail.com\",\n        \"a_first_name\": \"ali\",\n        \"a_last_name\": \"alhamoli\",\n        \"a_password\": \"123456789\",\n        \"a_verified_code\": \"326485\",\n        \"a_create_at\": \"2024-01-31 15:33:52\",\n        \"a_last_login\": \"2024-03-05 18:08:50\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)**  \n    you can't make this action becouse you are not signup with email and password\n    \n    ``` json\n                {\n                \"status\": \"Failure\",\n                \"code\": 403,\n                \"type\":\"forbidden\",\n                \"message\": \"This action is not allowed for you becouse you are signup with social account.\"\n                }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 401)**  \n    this error happen becouse the current pass thet admin entered it is not right.\n    \n    ``` json\n                {\n                \"status\": \"Failure\",\n                \"code\": 401,\n                \"type\":\"authentication_error\",\n                \"message\": \"password is wrong\"\n                }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 401)**  \n    this error happen becouse the new pass must be larger than or eqaul 8 chars.\n    \n    ``` json\n                {\n                \"status\": \"Failure\",\n                \"code\": 401,\n                \"type\":\"authentication_error\",\n                \"message\": \"Password must be at least 8 characters long\"\n                }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteuser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "a_id",
+											"value": "5",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminProfile}}/deleteadmin.php",
+									"host": [
+										"{{adminProfile}}"
+									],
+									"path": [
+										"deleteadmin.php"
+									]
+								},
+								"description": "# deleteadmin Api Documentation\n\n## delete admin from dashboard\n\n- **Endpoint:** `/deleteadmin.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `a_id` | int | The Id of the user. |\n\n### Request Example\n\n``` json\n{\n  \"a_id\": \"5\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"response\": {\n        \"massege\": \"Admin has been deleted successfully\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 500)**  \n    it happin if the procces to delete admin failed.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"sql_query_failure\",\n  \"message\": \"deleted failed try again\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "admin_info",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "admin_id",
+											"value": "4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminProfile}}/admin_info.php",
+									"host": [
+										"{{adminProfile}}"
+									],
+									"path": [
+										"admin_info.php"
+									]
+								},
+								"description": "# admin informatoin Api Documentation\n\n## display of admin informatoin\n\n\n- **Endpoint:** `/admin_info.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `a_id` | int | The Id of the admin. |\n\n### Request Example\n\n``` json\n{\n  \"a_id\": \"4\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin_information\": {\n        \"a_id\": 4,\n        \"a_email\": \"elshoram974@gmail.com\",\n        \"a_first_name\": \"ali\",\n        \"a_last_name\": \"alhamoli\",\n        \"a_password\": \"123456789\",\n        \"a_verified_code\": \"326485\",\n        \"a_create_at\": \"2024-01-31 15:33:52\",\n        \"a_last_login\": \"2024-04-23 14:29:08\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 404)**  \n    if the id of admin not found\n    \n\n``` json\n{\n    \"status\": \"Failure\",\n    \"code\": 404,\n    \"type\": \"no_user_found\",\n    \"message\": \"No user found.\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "admins",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{adminProfile}}/admins.php",
+									"host": [
+										"{{adminProfile}}"
+									],
+									"path": [
+										"admins.php"
+									]
+								},
+								"description": "# admins informatoin Api Documentation\n\n## display of admins informatoin\n\n- **Endpoint:** `/admins.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"admins\": [\n    {\n      \"a_id\": 4,\n      \"a_email\": \"elshoram974@gmail.com\",\n      \"a_first_name\": \"ali\",\n      \"a_last_name\": \"alhamoli\",\n      \"a_password\": \"123456789\",\n      \"a_verified_code\": \"326485\",\n      \"a_create_at\": \"2024-01-31 15:33:52\",\n      \"a_last_login\": \"2024-04-23 14:29:08\"\n    }\n  ]\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "feedback",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{adminProfile}}/feedback.php",
+									"host": [
+										"{{adminProfile}}"
+									],
+									"path": [
+										"feedback.php"
+									]
+								},
+								"description": "# feedback Api Documentation\n\n## help_and_support_information\n\ndisplay all information about help_and_support\n\n- **Endpoint:** `/feedback.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n|  |  |  |\n\n### Request Example\n\n``` json\n{\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"help_and_support_information\": [\n        {\n            \"ticket_id\": 1,\n            \"user_id\": 62,\n            \"subject\": \"bmw\",\n            \"description\": \"bmw\",\n            \"priority\": \"Medium\",\n            \"status\": \"Open\",\n            \"category\": \"Technical Support\",\n            \"created_at\": \"2024-05-01 14:34:52\",\n            \"updated_at\": \"2024-05-01 14:34:52\",\n            \"notes\": null,\n            \"attachments\": null\n        }\n    ]\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "update_admin_info",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "admin_id",
+											"value": "7",
+											"type": "text"
+										},
+										{
+											"key": "new_first_name",
+											"value": "sad awe",
+											"type": "text"
+										},
+										{
+											"key": "new_last_name",
+											"value": "sad sad",
+											"type": "text"
+										},
+										{
+											"key": "new_email",
+											"value": "sad awe@awe",
+											"type": "text"
+										},
+										{
+											"key": "old_password",
+											"value": "1234",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "12345",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{adminProfile}}/update_admin_info.php",
+									"host": [
+										"{{adminProfile}}"
+									],
+									"path": [
+										"update_admin_info.php"
+									]
+								},
+								"description": "# update_admin_information Api Documentation\n\n## change name of admin\n\nchange the first name and last name of admin.\n\n- **Endpoint:** `/update_admin_info.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `a_id` | int | The Id of the admin. |\n| `new_first_name` | String | the new first name |\n| `new_last_name` | String | the new last name |\n| `new_email` | String | the new email |\n| `old_password` | String | the old_password of the admin |\n| `new_password` | String | the new_password of the admin |\n\n### Request Example\n\n``` json\n{\n  \"a_id\": \"7\",\n  \"new_email\": \"sad awe@awe\"\n  \"first_name\": \"sad awe\"\n  \"new_last_name\": \"sad sad\"\n  \"old_password\": \"1234\"\n  \"new_password\": \"12345\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"admin_information\": {\n        \"a_id\": 7,\n        \"a_email\": \"sad awe@awe\",\n        \"a_first_name\": \"sad awe\",\n        \"a_last_name\": \"sad sad\",\n        \"a_password\": \"12345\",\n        \"a_verified_code\": null,\n        \"a_create_at\": \"2024-05-01 14:40:58\",\n        \"a_last_login\": \"2024-05-01 14:40:58\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 404)** if the admin_id not found\n    \n\n``` json\n{\n    \"status\": \"Failure\",\n    \"code\": 404,\n    \"type\": \"no_user_found\",\n    \"message\": \"No user found.\"\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -152,6 +710,39 @@
 					"item": [
 						{
 							"name": "login_user",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "elshoram974@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{usersAuth}}/login_user.php",
+									"host": [
+										"{{usersAuth}}"
+									],
+									"path": [
+										"login_user.php"
+									]
+								},
+								"description": "# Login Api Documentation\n\n## Login users By Email and Password\n\nLogin to user account that is no providers.\n\n- **Endpoint:** `/login_user.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `email` | String | Email address of the user. |\n| `password` | String | Password for the user. |\n\n### Request Example\n\n``` json\n{\n  \"email\": \"john.doe@example.com\",\n  \"password\": \"StrongPassword123\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"user\": {\n        \"user_id\": 42,\n        \"user_first_name\": \"Mohammed\",\n        \"user_last_name\": \"El Shora\",\n        \"user_email\": \"elshoram974@gmail.com\",\n        \"user_password\": \"$2y$10$9jVtGk3kxUYp9I9ZHsUFk.RFMSZqBBIBNEYM8wki5rR03sjzBr6D.\",\n        \"user_provider\": \"email_password\",\n        \"user_lastlogin\": \"2024-02-01 02:19:48\",\n        \"user_createdat\": \"2024-02-01 01:53:48\",\n        \"user_image\": null,//string\n        \"user_type\": \"personal\",\n        \"user_status\": \"active\", // enum('active', 'inactive', 'suspended', 'deleted', 'pending')\n        \"user_status_message\": null //string\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the email is incorrect\n    \n\n``` json\n{\n \"status\": \"Failure\",\n \"code\": 401,\n \"type\":\"auth-error\",\n \"message\": \"The email you entered does not exist\"\n }\n\n ```\n\nor When the password is incorrect\n\n``` json\n  {  \n   \"status\": \"Failure\",  \n   \"code\": 401, \n   \"type\":\"auth-error\", \n   \"message\": \"Error in password\"  \n  }\n\n ```\n\nor if provider is not `'email_password'`\n\n``` json\n{  \n\"status\": \"Failure\",  \n\"code\": 401,  \n\"type\":\"auth-error\",\n\"message\": \"User created by another provider\"  \n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)**  \n    You have to fill email and password .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n {  \n \"status\": \"Failure\",  \n \"code\": 400,  \n \"type\":\"post-error\",\n \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"  \n }\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "login_user Copy",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -236,7 +827,7 @@
 									"formdata": [
 										{
 											"key": "name",
-											"value": "Mohammed El Shora",
+											"value": "mohamad elshora",
 											"type": "text"
 										},
 										{
@@ -374,8 +965,1365 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "profile",
+					"item": [
+						{
+							"name": "change_password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "userId",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "currentPassword",
+											"value": "12345678910",
+											"type": "text"
+										},
+										{
+											"key": "newPassword",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{usersAuth}}/change_password.php",
+									"host": [
+										"{{usersAuth}}"
+									],
+									"path": [
+										"change_password.php"
+									]
+								},
+								"description": "# Change Password Api Documentation\n\n## Change the current password\n\nchange the pass to the user.\n\n- **Endpoint:** `/change_password.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n| `currentPassword` | String | the old Password for the user. |\n| `newPassword` | String | Password for the user. Minimum length: 8 chars. invalid the last password |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"1\",\n  \"currentPassword\": \"oldPassword\",\n  \"newPassword\": \"StrongPassword123\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"user\": {\n        \"user_id\": 42,\n        \"user_first_name\": \"Mohammed\",\n        \"user_last_name\": \"El Shora\",\n        \"user_email\": \"elshoram974@gmail.com\",\n        \"user_password\": \"$2y$10$9jVtGk3kxUYp9I9ZHsUFk.RFMSZqBBIBNEYM8wki5rR03sjzBr6D.\",\n        \"user_provider\": \"email_password\",\n        \"user_lastlogin\": \"2024-02-01 02:19:48\",\n        \"user_createdat\": \"2024-02-01 01:53:48\",\n        \"user_image\": null, // string value\n        \"user_type\": \"personal\",\n        \"user_status\": \"active\", //enum('active', 'inactive', 'suspended', 'deleted', 'pending')\n        \"user_status_message\": null // string value\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 409)**  \n    When the userId is not exist in database\n    \n    ``` json\n                       {\n                        \"status\": \"Failure\",\n                        \"code\": 409,\n                        \"type\":\"auth-error\",\n                        \"message\": \"The userId you entered does not exist\"\n                       }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 400)** When the length of the password is lesser than 8\n    \n    ``` json\n                   {\n                    \"status\": \"Failure\",\n                    \"code\": 400,\n                    \"type\":\"edit-error\",\n                    \"message\": \"The password is very weak\"\n                    }\n    \n     ```\n    \n\nWhen the new password is the same last password\n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"edit-error\",\n  \"message\": \"You can't use the same previous password\"\n}\n\n ```\n\n``` json\n   { \n     \"status\": \"Failure\", \n     \"code\": 403, \n     \"type\":\"auth-error\", \n     \"message\": \"User is not email_password to change pass\" \n   }\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "change_name",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "135",
+											"type": "text"
+										},
+										{
+											"key": "firstname",
+											"value": "wael",
+											"type": "text"
+										},
+										{
+											"key": "lastname",
+											"value": "ali",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost/change password/change name.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"change password",
+										"change name.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "change_image",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "135",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/Hoda/Desktop/download0.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost/change password/final update image.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"change password",
+										"final update image.php"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete_image",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "83",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost/change password/deleteimage.php",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"change password",
+										"deleteimage.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "changes",
+					"item": [
+						{
+							"name": "bot&chat",
+							"item": [
+								{
+									"name": "deletedirection",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "42",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "9",
+													"type": "text"
+												},
+												{
+													"key": "direction_id",
+													"value": "13",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/deletedirection.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"deletedirection.php"
+											]
+										},
+										"description": "# delete direction Api Documentation\n\n## delete direction from group\n\n- **Endpoint:** `/deletedirection.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the user group of this dir. |\n| `direction_id` | int | The Id of the dir that you wont delete. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"42\",\n  \"group_id\": \"8\",\n  \"direction_id\": \"9\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"direction has been deleted successfully\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin or owner of direction.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 500)** if the order to delete dir didn't complet.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"Error deleting direction from database. Please try again later.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "adddirection",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "m",
+													"type": "text"
+												},
+												{
+													"key": "max_activity",
+													"value": "100",
+													"type": "text"
+												},
+												{
+													"key": "inside_dir_id",
+													"value": "",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/adddirection.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"adddirection.php"
+											]
+										},
+										"description": "# add direction Api Documentation\n\n## add direction to group\n\n- **Endpoint:** `/adddirection.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the user group of this dir. |\n| `address` | char | The address of dir. |\n| `max_activity` | int | The num of max activity in dir. |\n| `inside_dir_id` | int | The Id of the perent dir if exists. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"42\",\n  \"group_id\": \"8\",\n  \"address\": \"ali\",\n  \"max_activity\": \"100\",\n  \"inside_dir_id\":,\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"direction_is_approved\": 1,\n    \"direction_id\": 14\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin or the user hasn't permission to do this action or group is read only.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "addgroup",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "ggggg",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "mdfgaswdeg",
+													"type": "text"
+												},
+												{
+													"key": "visibility",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "access_type",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "category",
+													"value": "personal",
+													"type": "text"
+												},
+												{
+													"key": "image",
+													"type": "file",
+													"src": []
+												},
+												{
+													"key": "type",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "discussion_type",
+													"value": "exist",
+													"type": "text"
+												},
+												{
+													"key": "status",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "status_message",
+													"value": "",
+													"type": "text"
+												},
+												{
+													"key": "list_users_id",
+													"value": "",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/addgroup.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"addgroup.php"
+											]
+										},
+										"description": "# add group Api Documentation\n\n## add group\n\n- **Endpoint:** `/addgroup.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\nكل حاجة شارحة نفسها ولو نسيت حاجة منهم شوفها فى الداتابيز\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"50\",\n  \"name\": \"ggggg\",\n  \"description\": \"mdfgaswdeg\",\n  \"visibility\": ,\n  \"access_type\":,\n  \"category\":\"personal\",\n  \"type\":,\n  \"discussion_type\":\"exist\",\n  \"status\":,\n  \"status_message\":,\n  \"list_users_id\":\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"group\": {\n        \"group_id\": 12,\n        \"group_name\": \"ggggg\",\n        \"group_owner_id\": 50,\n        \"group_creation_date\": \"2024-06-13 10:55:19\",\n        \"group_description\": \"mdfgaswdeg\",\n        \"group_visibility\": \"public\",\n        \"group_access_type\": \"read_write_with_admin_permission\",\n        \"group_category\": \"personal\",\n        \"group_image\": \"https://thiet.mrecode.com/api/assets/groups_files/ext\",\n        \"group_type\": \"public\",\n        \"group_discussion_type\": \"exist\",\n        \"group_status\": \"active\",\n        \"group_status_message\": null\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "addactivity",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "42",
+													"type": "text"
+												},
+												{
+													"key": "activity_group_id",
+													"value": "5",
+													"type": "text"
+												},
+												{
+													"key": "activity_type",
+													"value": "text_message",
+													"type": "text"
+												},
+												{
+													"key": "activity_content",
+													"value": "test",
+													"type": "text"
+												},
+												{
+													"key": "activity_direction_id",
+													"value": "",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "activity_reply_on",
+													"value": "",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "activity_attachments_size",
+													"value": "",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "activity_attachments_height",
+													"value": "",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "activity_attachments_width",
+													"value": "",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "activity_attachments_mimetype",
+													"value": "",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "file_request",
+													"type": "file",
+													"src": [],
+													"disabled": true
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/addactivity.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"addactivity.php"
+											]
+										},
+										"description": "# add activity Api Documentation\n\n## add activity to group\n\n- **Endpoint:** `/addactivity.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\nهى شارحة نفسها ولو فى حاجة ناسيها هاتها من الداتابيز\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"\",\n  \"activity_group_id\": \"\",\n  \"activity_type\": \"\",\n  \"activity_content\": \"\",\n  \"activity_direction_id\": \"\",\n  \"activity_reply_on\": \"\",\n  \"activity_attachments_size\": \"\",\n  \"activity_attachments_height\": \"\",\n  \"activity_attachments_width\": \"\",\n  \"activity_attachments_mimetype\": \"\",\n  \"file_request\": \"\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"activity_is_approved\": 1\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "approveddirection",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "62",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "direction_id",
+													"value": "10",
+													"type": "text"
+												},
+												{
+													"key": "approved",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/approveddirection.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"approveddirection.php"
+											]
+										},
+										"description": "# approved direction Api Documentation\n\n## approved direction by admin\n\n- **Endpoint:** `/approveddirection.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the user group of this dir. |\n| `direction_id` | int | The Id of the dir that you wont update approved. |\n| `approved` | int | The new approved. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"42\",\n  \"group_id\": \"8\",\n  \"direction_id\": \"9\",\n  \"approved\": \"1\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"direction approved has been updated successfully\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin .\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 500)** if the order to approved dir didn't complet.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"Error deleting direction from database. Please try again later.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "approvedactivity",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "62",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "5",
+													"type": "text"
+												},
+												{
+													"key": "activity_id",
+													"value": "10",
+													"type": "text"
+												},
+												{
+													"key": "approved",
+													"value": "'0'",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/approvedactivity.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"approvedactivity.php"
+											]
+										},
+										"description": "# approved direction Api Documentation\n\n## approved direction by admin\n\n- **Endpoint:** `/approveddirection.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the user group of this act. |\n| `activity_id` | int | The Id of the activiyy that you wont update approved. |\n| `approved` | int | The new approved. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"42\",\n  \"group_id\": \"8\",\n  \"activity_id\": \"9\",\n  \"approved\": \"1\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"activity approved has been updated successfully\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin .\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 500)** if the order to approved act didn't complet.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"Error updating activity approved from database. Please try again later.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "deleteactivity",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "62",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "9",
+													"type": "text"
+												},
+												{
+													"key": "activity_id",
+													"value": "15",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/deleteactivity.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"deleteactivity.php"
+											]
+										},
+										"description": "# delete activity Api Documentation\n\n## delete activity from group\n\n- **Endpoint:** `/deleteactivity.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the user group of this activity. |\n| activity_id | int | The Id of the activity that you wont delete. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"42\",\n  \"group_id\": \"8\",\n  \"activity_id\": \"9\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"activity has been deleted successfully\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin or owner of activity.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 500)** if the order to delete dir didn't complet.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"Error deleting activity from database. Please try again later.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "blockuser_directly",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "admin_id",
+													"value": "42",
+													"type": "text"
+												},
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "can_interaction",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/blockuser_directly.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"blockuser_directly.php"
+											]
+										},
+										"description": "# blockuser directly activity Api Documentation\n\n## block user from group or unblock.\n\n- **Endpoint:** /blockuser_directly.php\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `admin_id` | int | The Id of the admin who block the user. |\n| `user_id` | int | The Id of the user who blocked. |\n| `group_id` | int | The Id of the group of this activity or dir. |\n| can_interaction | int | The valuo 0 or 1. |\n| \\### Request Example |  |  |\n\n``` json\n{\n  \"admin_id\": \"50\",\n  \"user_id\": \"42\",\n  \"group_id\": \"8\",\n  \"can_interaction\": \"1\"\n}\n\n ```\n\n### Response Format\n\n#### In Success when the user blocked or unblocked\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": 'user status was changed'\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user who try block isn't admin.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 403)** if the user who admin try block is admin.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"forbidden\",\n  \"message\": \"Cannot block a user who is an admin.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 500)** if the order to block user didn't complet.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"Error changing the user status. Please try again later.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "blockuser",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "admin_id",
+													"value": "42",
+													"type": "text"
+												},
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "direction_id",
+													"value": "11",
+													"type": "text"
+												},
+												{
+													"key": "activity_id",
+													"value": "",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/blockuser.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"blockuser.php"
+											]
+										},
+										"description": "# blockuser activity Api Documentation\n\n## block user and delete activity or direction that the block is doing by it from group\n\n- **Endpoint:** /blockuser.php\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `admin_id` | int | The Id of the admin who block the user. |\n| `user_id` | int | The Id of the user who blocked. |\n| `group_id` | int | The Id of the group of this activity or dir. |\n| direction_id | int | The Id of the direction that you wont delete. |\n| activity_id | int | The Id of the activity that you wont delete. |\n| \\## one of direction_id or activity_id can be empty. |  |  |\n\n### Request Example\n\n``` json\n{\n  \"admin_id\": \"50\",\n  \"user_id\": \"42\",\n  \"group_id\": \"8\",\n  \"direction_id\": \"9\",\n  \"activity_id\": \"\",\n}\n\n ```\n\n### Response Format\n\n#### In Success when the user blocked by direction or activity\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": 'user was blocked'\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** if the direction_id and activity_id is empty in same time.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"missing_data\",\n  \"message\": \"Both direction_id and activity_id cannot be empty in same time.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 403)** if the user who try block isn't admin.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 403)** if the user who admin try block is admin.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"forbidden\",\n  \"message\": \"Cannot block a user who is an admin.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 500)** if the order to block user didn't complet.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"Error blocking the user. Please try again later.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 500)** if the order to block user complet put the order to delete activity or delete direction didn't complete.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"user was blocked but error deleting direction from database. Please try again later.\"\n}\n\n ```\n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 500,\n  \"type\":\"db_error\",\n  \"message\": \"user was blocked but error deleting activity from database. Please try again later.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "add_member",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "list_users_id",
+													"value": "{\"user1\":57,\"user2\":58}",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/add_member.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"add_member.php"
+											]
+										},
+										"description": "# add members Api Documentation\n\n## add members to group\n\n- **Endpoint:** `/addmember.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the user group of this dir. |\n| `list_users_id` | json | The ids of users. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"50\",\n  \"group_id\": \"8\",\n  \"list_users_id\": {\"1\":57,\"2\":58},\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": [\n    \"Successful addition\"\n  ]\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** if the list isn't json.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\": \"error_json\",\n  \"message\": \"Invalid JSON data\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "edit_group",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "name",
+													"value": "aaaa",
+													"type": "text"
+												},
+												{
+													"key": "image",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/edit_group.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"edit_group.php"
+											]
+										},
+										"description": "# edit group Api Documentation\n\n## edit group\n\n- **Endpoint:** `/edit_group.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the user group of this dir. |\n| `name` | char | The new name of group.///can be empty |\n| `image` | photo | The new photo to group. ///can be empty |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"50\",\n  \"group_id\": \"8\",\n  \"name\": \"aaaa\",\n  \"image\": \n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"group\": {\n        \"group_id\": 12,\n        \"group_name\": \"ggggg\",\n        \"group_owner_id\": 50,\n        \"group_creation_date\": \"2024-06-13 10:55:19\",\n        \"group_description\": \"mdfgaswdeg\",\n        \"group_visibility\": \"public\",\n        \"group_access_type\": \"read_write_with_admin_permission\",\n        \"group_category\": \"personal\",\n        \"group_image\": \"https://thiet.mrecode.com/api/assets/groups_files/ext\",\n        \"group_type\": \"public\",\n        \"group_discussion_type\": \"exist\",\n        \"group_status\": \"active\",\n        \"group_status_message\": null\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin .\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "group_permissions",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "discussion_type",
+													"value": "exist",
+													"type": "text"
+												},
+												{
+													"key": "access_type",
+													"value": "",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/group_permissions.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"group_permissions.php"
+											]
+										},
+										"description": "# group_permissions Api Documentation\n\n## group_permissions\n\n- **Endpoint:** `/group_permissions.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the group. |\n| `discussion_type` | char | The new discussion of group.///can be empty |\n| `access_type` | char | The new access of group. ///can be empty |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"50\",\n  \"group_id\": \"8\",\n  \"discussion_type\": \"exist\",\n  \"access_type\": \n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n##### when access_type is ampty and discussion_type is changed\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"the group_discussion_type is changed.\"\n  }\n}\n\n ```\n\n##### when discussion_type is ampty and access_type is changed\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"the group_access_type is changed.\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin .\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "promate_member",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "member_id",
+													"value": "56",
+													"type": "text"
+												},
+												{
+													"key": "is_admin",
+													"value": "true",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/promate_member.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"promate_member.php"
+											]
+										},
+										"description": "# promate_member Api Documentation\n\n## promate_member\n\n- **Endpoint:** `/promate_member.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user who try change promate of member. |\n| `group_id` | int | The Id of the group. |\n| `member_id` | int | The Id of the member in group |\n| `is_admin` | bool | The new promate of this member in this group. ///true or folse |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"50\",\n  \"group_id\": \"8\",\n  \"member_id\": \"56\",\n  \"is_admin\": \"true\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n##### when the member becoume admin\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"this user has become admin\"\n  }\n}\n\n ```\n\n##### when the member not becoume admin\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"this user has not become admin\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin .\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 403)** if the member is owner of group.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"you can not change the permissions of owner of group.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "remove_member",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "member_id",
+													"value": "56",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/remove_member.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"remove_member.php"
+											]
+										},
+										"description": "# remove_member Api Documentation\n\n## remove_member\n\n- **Endpoint:** `/remove_member.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user who try remove member. |\n| `group_id` | int | The Id of the group. |\n| `member_id` | int | The Id of the member in group |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"50\",\n  \"group_id\": \"8\",\n  \"member_id\": \"56\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"this user has been deleted successfully\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)** if the user isn't admin .\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"User does not have permission to perform this action.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 403)** if the member is owner of group.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 403,\n  \"type\":\"access_denied\",\n  \"message\": \"you can not remove the owner of group.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "search_users",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "quere",
+													"value": "mohamad",
+													"type": "text"
+												},
+												{
+													"key": "page",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "limit",
+													"value": "3",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/search_users.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"search_users.php"
+											]
+										},
+										"description": "# search_users Api Documentation\n\n## search_users\n\n- **Endpoint:** `/search_users.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `quere` | char | the quere which search by it. |\n| \\### Request Example |  |  |\n\n``` json\n{\n  \"user_id\": \"mohamad\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"users\": [\n    {\n      \"user_id\": 51,\n      \"user_first_name\": \"mohamad\",\n      \"user_last_name\": \"elshora\",\n      \"user_lastlogin\": \"2024-03-21 16:23:27\",\n      \"user_image\": null\n    },\n    {\n      \"user_id\": 52,\n      \"user_first_name\": \"mohamad\",\n      \"user_last_name\": \"elshora\",\n      \"user_lastlogin\": \"2024-03-21 16:24:15\",\n      \"user_image\": null\n    },\n    {\n      \"user_id\": 53,\n      \"user_first_name\": \"mohamad\",\n      \"user_last_name\": \"elshora\",\n      \"user_lastlogin\": \"2024-03-21 16:55:51\",\n      \"user_image\": null\n    },\n    {\n      \"user_id\": 54,\n      \"user_first_name\": \"mohamad\",\n      \"user_last_name\": \"elshora\",\n      \"user_lastlogin\": \"2024-03-21 16:56:00\",\n      \"user_image\": null\n    },\n    {\n      \"user_id\": 55,\n      \"user_first_name\": \"mohamad\",\n      \"user_last_name\": \"elshora\",\n      \"user_lastlogin\": \"2024-03-21 16:56:21\",\n      \"user_image\": null\n    },\n    {\n      \"user_id\": 56,\n      \"user_first_name\": \"mohamad\",\n      \"user_last_name\": \"elshora\",\n      \"user_lastlogin\": \"2024-03-21 16:57:07\",\n      \"user_image\": null\n    }\n  ]\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 404)** if the users aren't found.\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 404,\n  \"type\": \"no_users_found\",\n  \"message\": \"No users found.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "member_notification",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "user_id",
+													"value": "50",
+													"type": "text"
+												},
+												{
+													"key": "group_id",
+													"value": "8",
+													"type": "text"
+												},
+												{
+													"key": "notification",
+													"value": "notify",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/member_notification.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"member_notification.php"
+											]
+										},
+										"description": "# member_notification Api Documentation\n\n## member_notification\n\n- **Endpoint:** `/member_notification.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | int | The Id of the group. |\n| `notification` | char | The new notification of this user in group. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"50\",\n  \"group_id\": \"8\",\n  \"notification\": \"notify\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"response\": {\n    \"massege\": \"the member_notification is changed.\"\n  }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								},
+								{
+									"name": "group_members",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "group_id",
+													"value": "5",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{changesbot}}/group_members.php",
+											"host": [
+												"{{changesbot}}"
+											],
+											"path": [
+												"group_members.php"
+											]
+										},
+										"description": "# group_memders Api Documentation\n\n## group_members\n\n- **Endpoint:** `/group_members.php`\n    \n- **Method:** `POST`\n    \n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `group_id` | int | The Id of the group which you wont the users in it . |\n|  |  |  |\n\n### Request Example\n\n``` json\n{\n  \"group_id\": \"8\" \n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"users\": [\n    {\n      \"group_id\": 5,\n      \"member_id\": 50,\n      \"member_can_interaction\": 1,\n      \"member_notification\": \"notify\",\n      \"member_join_date\": \"2024-04-23 03:27:39\",\n      \"member_is_admin\": 0,\n      \"user_email\": \"alialiali@gmail.com\",\n      \"user_first_name\": \"adel\",\n      \"user_last_name\": \"eid\",\n      \"user_lastlogin\": \"2024-03-14 16:29:12\",\n      \"user_image\": null\n    },\n    {\n      \"group_id\": 5,\n      \"member_id\": 62,\n      \"member_can_interaction\": 1,\n      \"member_notification\": \"notify\",\n      \"member_join_date\": \"2024-04-23 03:26:11\",\n      \"member_is_admin\": 1,\n      \"user_email\": \"alialhamoli475@gmail.com\",\n      \"user_first_name\": \"Ali\",\n      \"user_last_name\": \"\",\n      \"user_lastlogin\": \"2024-04-21 20:37:20\",\n      \"user_image\": \"https://thiet.mrecode.com/api/assets/users_photo/14100image_cropper_1714072815308.jpg\"\n    },\n    {\n      \"group_id\": 5,\n      \"member_id\": 42,\n      \"member_can_interaction\": 1,\n      \"member_notification\": \"notify\",\n      \"member_join_date\": \"2024-04-23 03:29:33\",\n      \"member_is_admin\": 1,\n      \"user_email\": \"elshoram974@gmail.com\",\n      \"user_first_name\": \"Mohammed\",\n      \"user_last_name\": \"El Shora\",\n      \"user_lastlogin\": \"2024-04-29 09:56:57\",\n      \"user_image\": \"https://thiet.mrecode.com/api/assets/users_photo/97183image_cropper_1713344868920.jpg\"\n    },\n    {\n      \"group_id\": 5,\n      \"member_id\": 45,\n      \"member_can_interaction\": 1,\n      \"member_notification\": \"without_notify\",\n      \"member_join_date\": \"2024-05-09 07:22:14\",\n      \"member_is_admin\": 0,\n      \"user_email\": \"mre9743@gmail.com\",\n      \"user_first_name\": \"MRE\",\n      \"user_last_name\": \"CODE\",\n      \"user_lastlogin\": \"2024-04-21 23:58:33\",\n      \"user_image\": null\n    }\n  ]\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 404)** if the users not found or the group not found .\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 404,\n  \"type\": \"no_users_found\",\n  \"message\": \"No users found.\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "changename",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "45",
+											"type": "text"
+										},
+										{
+											"key": "new_first_name",
+											"value": "ali",
+											"type": "text"
+										},
+										{
+											"key": "new_last_name",
+											"value": "alhamoli",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{changes}}/changename.php",
+									"host": [
+										"{{changes}}"
+									],
+									"path": [
+										"changename.php"
+									]
+								},
+								"description": "# Change Name Api Documentation\n\n## change name of user\n\nchange the first name and last name of user.\n\n- **Endpoint:** `/changename.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n| `new_first_name` | String | the new first name |\n| `new_last_name` | String | the new last name |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"45\",\n  \"new_first_name\": \"ali\"\n  \"new_last_name\": \"elhamoli\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"user\":\n        {\n            \"user_id\": 45,\n            \"user_email\": \"mre9743@gmail.com\",\n            \"user_first_name\": \"ali\",\n            \"user_last_name\": \"alhamoli\",\n            \"user_password\": \"$2y$10$ExlqpJ7wW1NdMncnYu2sQOSZa4V4rgBcqB6TJNzD6ZWOroQYCDJ9i\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-02-27 20:56:37\",\n            \"user_createdat\": \"2024-02-13 22:21:19\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "deleteuser",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "50",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{changes}}/deleteuser.php",
+									"host": [
+										"{{changes}}"
+									],
+									"path": [
+										"deleteuser.php"
+									]
+								},
+								"description": "# deleteuser Api Documentation\n\n## delete user from app and change admin of his groups to anather admin\n\n- **Endpoint:** `/deleteuser.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"50\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"response\": {\n        \"massege\": \"User has been deleted successfully\"\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "change image",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "45",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "postman-cloud:///1eee7653-eebf-4bb0-bf8c-31d4e7144967"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{changes}}/changephoto.php",
+									"host": [
+										"{{changes}}"
+									],
+									"path": [
+										"changephoto.php"
+									]
+								},
+								"description": "# Change photo Api Documentation\n\n## change photo of user\n\n- **Endpoint:** `/changephoto.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `file` | String | the file of image |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"45\",\n  \"file\": \"module_table_bottom.png\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{  \n\"status\": \"Success\",  \n\"user\": {  \n\"user_id\": 45,  \n\"user_email\": \"mre9743@gmail.com\",  \n\"user_first_name\": \"ali\",  \n\"user_last_name\": \"alhamoli\",  \n\"user_password\": \"$2y$10$ExlqpJ7wW1NdMncnYu2sQOSZa4V4rgBcqB6TJNzD6ZWOroQYCDJ9i\",  \n\"user_provider\": \"email_password\",  \n\"user_lastlogin\": \"2024-02-27 20:56:37\",  \n\"user_createdat\": \"2024-02-13 22:21:19\",  \n\"user_image\": \"https://thiet.mrecode.com/api/assets/users_photo/48171module_table_bottom.png\",  \n\"user_type\": \"personal\",  \n\"user_status\": \"active\",  \n\"user_status_message\": null  \n}  \n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    if the extension is not sapported\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 401,\n  \"type\":\"auth-error\",\n  \"message\": \"This file is not support\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 401)**  \n    if the file is larger than 10 bytes\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 401,\n  \"type\":\"auth-error\",\n  \"message\": \"This file is larg in size\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "changepassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "42",
+											"type": "text"
+										},
+										{
+											"key": "current_password",
+											"value": "123456789",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{changes}}/changepassword.php",
+									"host": [
+										"{{changes}}"
+									],
+									"path": [
+										"changepassword.php"
+									]
+								},
+								"description": "# changepassword Api Documentation\n\n## change password of user\n\n- **Endpoint:** `/changepassword.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n| `current_password` | String | the current pass |\n| `new_password` | String | the new pass |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"45\",\n  \"current_password\": \"123456789\"\n  \"new_password\": \"12345678\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"user\":\n        {\n            \"user_id\": 42,\n            \"user_email\": \"elshoram974@gmail.com\",\n            \"user_first_name\": \"Mohammed\",\n            \"user_last_name\": \"El Shora\",\n            \"user_password\": \"$2y$10$iMZkcd.KYLeUNN9INKlLTOFFlUJS7PTpVcRz1bea9Em8FxByANZ.q\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-03-14 16:00:25\",\n            \"user_createdat\": \"2024-02-01 01:53:48\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 403)**  \n    you can't make this action becouse you are not signup with email and password\n    \n    ``` json\n          {\n          \"status\": \"Failure\",\n          \"code\": 403,\n          \"type\":\"forbidden\",\n          \"message\": \"This action is not allowed for you becouse you are signup with social account.\"\n          }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 401)**  \n    this error happen becouse the current pass thet user entered it is not right.\n    \n    ``` json\n          {\n          \"status\": \"Failure\",\n          \"code\": 401,\n          \"type\":\"authentication_error\",\n          \"message\": \"password is wrong\"\n          }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 401)**  \n    this error happen becouse the new pass must be larger than or eqaul 8 chars.\n    \n    ``` json\n          {\n          \"status\": \"Failure\",\n          \"code\": 401,\n          \"type\":\"authentication_error\",\n          \"message\": \"Password must be at least 8 characters long\"\n          }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "delete image",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "45",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{changes}}/deletephoto.php",
+									"host": [
+										"{{changes}}"
+									],
+									"path": [
+										"deletephoto.php"
+									]
+								},
+								"description": "# delete photo Api Documentation\n\n## delete photo of user\n\n- **Endpoint:** `/deletephoto.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"45\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"user\":\n        {\n            \"user_id\": 45,\n            \"user_email\": \"mre9743@gmail.com\",\n            \"user_first_name\": \"ali\",\n            \"user_last_name\": \"alhamoli\",\n            \"user_password\": \"$2y$10$ExlqpJ7wW1NdMncnYu2sQOSZa4V4rgBcqB6TJNzD6ZWOroQYCDJ9i\",\n            \"user_provider\": \"email_password\",\n            \"user_lastlogin\": \"2024-02-27 20:56:37\",\n            \"user_createdat\": \"2024-02-13 22:21:19\",\n            \"user_image\": null,\n            \"user_type\": \"personal\",\n            \"user_status\": \"active\",\n            \"user_status_message\": null\n        }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)** if the user don't has personal image\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 401,\n  \"type\":\"auth-error\",\n  \"message\": \"this user is not put image\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "delete_user_from_some_groups",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "62",
+											"type": "text"
+										},
+										{
+											"key": "group_id",
+											"value": "[9]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{changes}}/delete_user_from_some_groups.php",
+									"host": [
+										"{{changes}}"
+									],
+									"path": [
+										"delete_user_from_some_groups.php"
+									]
+								},
+								"description": "# delete user from some groups Api Documentation\n\n## delete user from some groups\n\n- **Endpoint:** `/delete_user_from_some_groups.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `group_id` | json | The Id of the group by json. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"45\",\n  \"group_id\": \"[5,6]\",\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n- **success Response** if only delete user\n    \n\n``` json\n{\n    \"status\": \"Success\",\n    \"response\": {\n        \"massege\": \"User has been deleted successfully\"\n    }\n}\n\n ```\n\n- **success Response** if delete user and delete group\n    \n    ``` json\n      {\n      \"status\": \"Success\",\n      \"response\": {\n        \"massege\": \"User has been deleted successfully\"\n      },\n      \"response_group\": {\n        \"status\": \"Success\",\n        \"response\": {\n          \"massege\": \"group has been deleted successfully\"\n        }\n      }\n      }\n    \n     ```\n    \n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)** if the user don't has personal image\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 401,\n  \"type\":\"auth-error\",\n  \"message\": \"this user is not put image\"\n}\n\n ```\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "home",
+					"item": [
+						{
+							"name": "chat",
+							"item": [
+								{
+									"name": "New Request",
+									"request": {
+										"method": "GET",
+										"header": []
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "directions_and_activities",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "group_id",
+											"value": "5",
+											"type": "text"
+										},
+										{
+											"key": "direction_id",
+											"value": "NULL",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{home}}/directions_and_activities.php",
+									"host": [
+										"{{home}}"
+									],
+									"path": [
+										"directions_and_activities.php"
+									]
+								},
+								"description": "### POST {{home}}/directions_and_activities.php\n\nThis endpoint is used to retrieve directions and activities based on the provided payload.\n\n#### Form-Data Parameters\n\n- `group_id` (text) -\n- `direction_id` (text) -\n    \n\n#### Response\n\n- Status: 200\n- Content-Type: application/json\n    \n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"status\": {\"type\": \"string\"},\n        \"activites\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"activity_id\": {\"type\": \"integer\"},\n                \"activity_group_id\": {\"type\": \"integer\"},\n                \"activity_direction_id\": {\"type\": \"null\"},\n                \"activity_type\": {\"type\": \"string\"},\n                \"activity_reply_on\": {\"type\": \"null\"},\n                \"activity_content\": {\"type\": \"string\"},\n                \"activity_attachments_url\": {\"type\": \"null\"},\n                \"activity_attachments_size\": {\"type\": \"null\"},\n                \"activity_attachments_height\": {\"type\": \"null\"},\n                \"activity_attachments_width\": {\"type\": \"null\"},\n                \"activity_attachments_mimetype\": {\"type\": \"null\"},\n                \"activity_date\": {\"type\": \"string\"},\n                \"activity_is_approved\": {\"type\": \"integer\"},\n                \"activity_notify_others\": {\"type\": \"string\"},\n                \"activity_owner_id\": {\"type\": \"integer\"},\n                \"activity_last_modified\": {\"type\": \"null\"},\n                \"user_id\": {\"type\": \"integer\"},\n                \"user_email\": {\"type\": \"string\"},\n                \"user_first_name\": {\"type\": \"string\"},\n                \"user_last_name\": {\"type\": \"string\"},\n                \"user_provider\": {\"type\": \"string\"},\n                \"user_lastlogin\": {\"type\": \"string\"},\n                \"user_createdat\": {\"type\": \"string\"},\n                \"user_image\": {\"type\": \"string\"},\n                \"user_type\": {\"type\": \"string\"},\n                \"user_status\": {\"type\": \"string\"},\n                \"user_status_message\": {\"type\": \"null\"},\n                \"group_id\": {\"type\": \"integer\"},\n                \"member_id\": {\"type\": \"integer\"},\n                \"member_can_interaction\": {\"type\": \"integer\"},\n                \"member_notification\": {\"type\": \"string\"},\n                \"member_join_date\": {\"type\": \"string\"},\n                \"member_is_admin\": {\"type\": \"integer\"}\n            }\n        },\n        \"directions\": {\n            \"type\": \"array\",\n            \"items\": {}\n        }\n    }\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "home",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "42",
+											"type": "text"
+										},
+										{
+											"key": "user_password",
+											"value": "123456789",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{home}}/home.php",
+									"host": [
+										"{{home}}"
+									],
+									"path": [
+										"home.php"
+									]
+								},
+								"description": "# home Api Documentation\n\n## view home page to the user\n\nview home page to the user and his groups.\n\n- **Endpoint:** `/home.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `user_id` | int | The Id of the user. |\n| `user_password` | String | current Password for the user. |\n\n### Request Example\n\n``` json\n{\n  \"user_id\": \"45\",\n  \"user_password\": \"12345678\"\n}\n\n ```\n\n### Response Format\n\n#### In Success\n\n``` json\n{\n    \"status\": \"Success\",\n    \"groups\": [\n        {\n            \"group_id\": 3,\n            \"group_name\": \"Aaaa\",\n            \"group_owner_id\": 45,\n            \"group_creation_date\": \"2024-03-18 15:28:07\",\n            \"group_description\": null,\n            \"group_visibility\": \"public\",\n            \"group_access_type\": \"read_write_with_admin_permission\",\n            \"group_category\": \"personal\",\n            \"group_image\": null,\n            \"group_type\": \"public\",\n            \"group_discussion_type\": \"exist\",\n            \"group_status\": \"active\",\n            \"group_status_message\": null\n        }\n    ],\n    \"activity 1\": {\n        \"activity_id\": 8,\n        \"activity_group_id\": 3,\n        \"activity_direction_id\": null,\n        \"activity_type\": \"text_message\",\n        \"activity_reply_on\": null,\n        \"activity_content\": null,\n        \"activity_attachments\": null,\n        \"activity_date\": \"2024-03-18 15:30:51\",\n        \"activity_post_status\": \"admin_agree\",\n        \"activity_notify_others\": \"custom_notify\",\n        \"activity_owner_id\": 42,\n        \"activity_last_modified\": null\n    },\n    \"owner 1\": {\n        \"user_id\": 42,\n        \"user_email\": \"elshoram974@gmail.com\",\n        \"user_first_name\": \"mohamed\",\n        \"user_last_name\": \" eshora\",\n        \"user_password\": \"$2y$10$oxPW3o6wOH7O.0m/CxPTU.YQjHEkK/ZYXj4f01apHX6d7FLnXw0UW\",\n        \"user_provider\": \"email_password\",\n        \"user_lastlogin\": \"2024-03-19 14:12:15\",\n        \"user_createdat\": \"2024-02-01 01:53:48\",\n        \"user_image\": null,\n        \"user_type\": \"personal\",\n        \"user_status\": \"active\",\n        \"user_status_message\": null\n    }\n}\n\n ```\n\n#### In Success put the user is not in eny groups\n\n``` json\n{  \n\"status\": \"Success\",  \n\"groups\": [],\n\"user\": {\n        \"user_id\": 42,\n        \"user_email\": \"elshoram974@gmail.com\",\n        \"user_first_name\": \"Mohammed\",\n        \"user_last_name\": \"El Shora\",\n        \"user_password\": \"$2y$10$bO3Ni/6nIofq/7txdpNRWONfoYBS.kRqZpmDdebVRWFZI4xUkUVI2\",\n        \"user_provider\": \"email_password\",\n        \"user_lastlogin\": \"2024-03-25 00:13:24\",\n        \"user_createdat\": \"2024-02-01 01:53:48\",\n        \"user_image\": \"https://thiet.mrecode.com/api/assets/users_photo/57031image_cropper_1711059450266.jpg\",\n        \"user_type\": \"personal\",\n        \"user_status\": \"active\",\n        \"user_status_message\": null\n    }\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 401)**  \n    When the user is chabged pass from anather  \n    device.\n    \n    ``` json\n                                                                    {\n                                                                    \"status\": \"Failure\",\n                                                                    \"code\": 401,\n                                                                    \"type\": \"authentication_error\",\n                                                                    \"message\": \"password is changed\"\n                                                                    }\n    \n     ```\n    \n- **Error Response (HTTP Status Code: 400)** When the user is not active.\n    \n    ``` json\n                                                                          {\n                                                                          \"status\": \"Failure\",\n                                                                          \"code\": 400,\n                                                                          \"type\":\"user_inactive\",\n                                                                          \"message\": \"User is not active!\"\n                                                                          }\n    \n     ```\n    \n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						},
+						{
+							"name": "get_activities",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "activite_id",
+											"value": "[10,21]",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{home}}/get_activities.php",
+									"host": [
+										"{{home}}"
+									],
+									"path": [
+										"get_activities.php"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "show information to user",
+					"item": [
+						{
+							"name": "yourgroups",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "45",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{show information to user}}/yourgroups.php",
+									"host": [
+										"{{show information to user}}"
+									],
+									"path": [
+										"yourgroups.php"
+									]
+								},
+								"description": "# yourgroups Api Documentation\n\n## show the groups that is this user is admin of it\n\n- **Endpoint:** `/yourgroups.php`\n- **Method:** `POST`\n- **Request Format:** JSON\n    \n\n### Request Parameters\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `userId` | int | The Id of the user. |\n\n### Request Example\n\n``` json\n{\n  \"userId\": \"50\",\n}\n\n ```\n\n### Response Format\n\n#### In Success put this user isn't admin to any groups\n\n``` json\n{\n    \"status\": \"Success\",\n    \"groups\": []\n}\n\n ```\n\n#### In Success\n\n``` json\n{\n  \"status\": \"Success\",\n  \"groups\": [\n    {\n      \"group_id\": 2,\n      \"group_name\": \"haha\",\n      \"group_owner_id\": 45,\n      \"group_creation_date\": \"2024-02-21 17:49:30\",\n      \"group_description\": \"akl;jsf;a b sklbnsanvklvv viohvos\",\n      \"group_visibility\": \"public\",\n      \"group_access_type\": \"read_write_with_admin_permission\",\n      \"group_category\": \"personal\",\n      \"group_image\": null,\n      \"group_type\": \"public\",\n      \"group_discussion_type\": \"exist\",\n      \"group_status\": \"active\",\n      \"group_status_message\": null\n    },\n    {\n      \"group_id\": 4,\n      \"group_name\": \"zzzzzzzz\",\n      \"group_owner_id\": 45,\n      \"group_creation_date\": \"2024-02-25 07:52:51\",\n      \"group_description\": null,\n      \"group_visibility\": \"public\",\n      \"group_access_type\": \"read_write_with_admin_permission\",\n      \"group_category\": \"personal\",\n      \"group_image\": null,\n      \"group_type\": \"public\",\n      \"group_discussion_type\": \"exist\",\n      \"group_status\": \"active\",\n      \"group_status_message\": null\n    }\n  ]\n}\n\n ```\n\n#### In Error\n\n- **Error Response (HTTP Status Code: 400)** You have to fill all posts body .. if you don't fill it or when you forgot one of the post body\n    \n\n``` json\n{\n  \"status\": \"Failure\",\n  \"code\": 400,\n  \"type\":\"post-error\",\n  \"message\": \"You can't make 'postBodyName' empty. 'postBodyName': postBodyNameData\"\n}\n\n ```"
+							},
+							"response": []
+						}
+					]
 				}
 			]
+		},
+		{
+			"name": "bot",
+			"item": [
+				{
+					"name": "chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "message",
+									"value": "please sent lectures ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/api/chatbot",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"chatbot"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "send_request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "message",
+							"value": "test from api",
+							"type": "text"
+						},
+						{
+							"key": "topic",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "data",
+							"value": "'{\"aa\":\"bb\"}'",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseLink}}/libraries/notification/send_notification.php",
+					"host": [
+						"{{baseLink}}"
+					],
+					"path": [
+						"libraries",
+						"notification",
+						"send_notification.php"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
